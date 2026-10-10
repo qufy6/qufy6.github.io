@@ -89,7 +89,7 @@ python3 -c "print('new.name@example.edu'.replace('@', '#')[::-1])"
 
 记得顺手更新状态栏里的 `updated 2026-10`。
 
-**改了 CSS / JS 之后**：把 `index.html` 和 `404.html` 里 `style.css?v=5`、`main.js?v=5` 的数字加 1。GitHub Pages 会缓存 10 分钟，改版本号能让访客立刻拿到新样式（博客页面会自动处理）。
+**改了 CSS / JS 之后**：把 `index.html` 和 `404.html` 里 `style.css?v=6`、`main.js?v=6` 的数字加 1。GitHub Pages 会缓存 10 分钟，改版本号能让访客立刻拿到新样式（博客页面会自动处理）。
 
 ## 本地预览
 

@@ -1010,7 +1010,7 @@ kbd {
   padding: 0;
   list-style: none;
   color: var(--text-2);
-  font-size: clamp(1rem, 1.7vw, 1.15rem);
+  font-size: clamp(1rem, 1.7vw, 1.08rem);
   line-height: 1.45;
 }
 .hero-affil li { display: flex; align-items: center; gap: 12px; }
@@ -1066,7 +1066,8 @@ kbd {
   white-space: nowrap;
   vertical-align: 2px;
 }
-.hero-affil .pill { display: table; margin: 7px 0 1px; }
+.hero-affil .nw { white-space: nowrap; }
+.hero-affil .pill { font-size: .66rem; vertical-align: 2px; }
 .bio .seeking-line { display: flex; align-items: center; gap: 11px; color: var(--danger); font-weight: 500; }
 .bio .seeking-line strong { color: inherit; }
 .bio .seeking-line .pulse { flex: none; }
@@ -1197,7 +1198,6 @@ kbd {
   font-size: 1rem;
 }
 .hobby-icon svg { width: 18px; height: 18px; }
-.hobby-zh { color: var(--muted); font: 400 1.05rem/1 var(--font-kai); letter-spacing: .08em; }
 .travel-stats { margin: 0 0 18px; color: var(--muted); font: 500 .8rem/1.5 var(--font-mono); }
 .place-groups { display: grid; gap: 14px; }
 .place-group h4 {
@@ -1245,6 +1245,13 @@ kbd {
   background:
     radial-gradient(120% 90% at 50% 0%, var(--accent-soft), transparent 70%),
     repeating-linear-gradient(135deg, transparent 0 11px, var(--line) 11px 12px);
+}
+.media.is-empty[data-glyph="brush"]::before {
+  content: "";
+  inset: 22% 34%;
+  background: var(--text);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 4c-6 1-10 6-12 12l-2 4 4-2c6-2 11-6 12-12Z'/%3E%3Cpath d='M14 10 6 18'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 4c-6 1-10 6-12 12l-2 4 4-2c6-2 11-6 12-12Z'/%3E%3Cpath d='M14 10 6 18'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .media.is-empty::before {
   content: attr(data-glyph);
@@ -1521,6 +1528,7 @@ kbd {
   .dock-sep { display: none; }
   .icon-btn { width: 30px; height: 30px; }
   .seeking { gap: 8px; padding: 9px 13px 9px 11px; font-size: .72rem; }
+  .hero-affil .nw { white-space: normal; }
 }
 
 @media (hover: none) {
