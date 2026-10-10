@@ -11,7 +11,7 @@ layout: base
       <p class="post-meta-line">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
         <span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
-        <span><span id="vercount_value_page_pv">--</span> reads</span>
+        <span title="Page views (Vercount)">pv <span id="vercount_value_page_pv">--</span></span>
         {%- for tag in page.tags %}
         <span class="post-tag">#{{ tag }}</span>
         {%- endfor %}
