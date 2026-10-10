@@ -38,22 +38,27 @@ _config.yml                Jekyll 配置
 ---
 title: "Notes on diffusion language models"
 tags: [dlm, reading]
-math: true          # 需要公式时才加，用 $...$ 和 $$...$$
+math: true          # 需要公式时才加
 ---
 
 正文用 Markdown 写，代码块会自动高亮。
 ```
+
+公式（KaTeX）统一用 `$$…$$`：写在句子里就是行内公式；单独成段（上下空一行）就是独立公式，可以加 `\tag{1}` 编号。不要用单个 `$`。
+图片放在 `assets/blog/文章名/`，多张图并排可以参考 LLaDA 那篇里的 `<figure class="fig-row">`。
 
 推送后会出现在 `/blog/`，主页的 Blog 区会自动显示最新 3 篇，RSS 在 `/blog/feed.xml`。
 注意：正文里如果要原样写 `{{` 或 `{%`，需要用 `{% raw %}…{% endraw %}` 包起来（Jekyll 的模板语法）。
 
 ## 常见修改
 
-**加去过的地方**：编辑 `assets/data/places.json`，照格式加一行：
+**加去过的地方**：编辑 `assets/data/places.json`，照格式加一行（地名只用英文）：
 ```json
-{ "name": "Paris", "zh": "巴黎", "lat": 48.86, "lon": 2.35 },
+{ "name": "Paris", "lat": 48.86, "lon": 2.35 },
 ```
-`"type": "base"` 表示求学/工作过的地方（会有光圈和名字标签），`"label": "left"` 让标签显示在左边。`journey` 是地球上画弧线连起来的路线。
+- `"type": "base"`：求学/工作过的地方（有光圈和名字标签）；`"label": "left"` 让标签显示在左边
+- `"list": false`：只在地球仪上标点，不出现在右边的列表里（该组末尾会自动显示 “etc.”）
+- 列表按文件里的先后顺序显示；`journey` 是地球上画弧线连起来的路线
 
 **兴趣区放照片 / 视频**：把文件放到 `assets/media/soccer/`（或 `music/`、`calligraphy/`），然后在 `index.html` 对应的 `<div class="media" …>` 里加：
 ```html
