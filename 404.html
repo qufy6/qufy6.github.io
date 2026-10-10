@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 · Feiyu Qu</title>
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") d.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="aurora"><span></span><span></span><span></span><span></span></div>
+    <canvas id="net"></canvas>
+    <div class="grid"></div>
+    <div class="grain"></div>
+  </div>
+  <svg class="fx" width="0" height="0" aria-hidden="true" focusable="false"><defs id="fx-defs"></defs></svg>
+
+  <main class="notfound">
+    <div class="card glass spot">
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>error 404</p>
+      <h1>Page not found</h1>
+      <div class="term-body">
+        <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> cd <span id="missing-path">/this-page</span></span>
+        <span class="ln out">cd: no such file or directory</span>
+      </div>
+      <a class="chip liquid" href="/">← cd ~ &nbsp;(back home)</a>
+    </div>
+  </main>
+  <script>document.getElementById("missing-path").textContent = location.pathname;</script>
+</body>
+</html>
