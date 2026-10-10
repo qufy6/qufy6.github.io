@@ -1140,7 +1140,7 @@ kbd {
   cursor: pointer;
   transition: color .2s var(--ease), border-color .2s var(--ease), background-color .2s var(--ease);
 }
-.place-chip .zh { margin-left: 5px; color: var(--muted); }
+.place-etc { align-self: center; padding: 0 4px; color: var(--muted); font: 500 .76rem/1 var(--font-mono); }
 .place-chip.base { border-color: var(--accent-line); color: var(--accent); }
 .place-chip:hover, .place-chip.active { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
 
@@ -1287,6 +1287,36 @@ kbd {
 .prose th, .prose td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
 .prose th { color: var(--text); font-weight: 600; }
 .prose hr { height: 1px; margin: 2.4em 0; border: 0; background: var(--line); }
+.prose .abstract {
+  margin: 0 0 2.2em;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--code-bg);
+  font-size: .98rem;
+}
+.prose .abstract > :last-child { margin-bottom: 0; }
+.prose .katex { font-size: 1.05em; }
+.prose .katex-display { margin: 1.1em 0; padding: 4px 2px; overflow-x: auto; overflow-y: hidden; }
+.prose figure { margin: 2em 0; }
+.prose .fig-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.prose .fig-row img {
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 3 / 2;
+  padding: 8px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  filter: var(--figure-filter);
+}
+.prose figcaption { grid-column: 1 / -1; margin-top: 8px; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+.prose .refs { padding-left: 1.6em; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+.prose .refs li { margin: .55em 0; padding: 2px 6px; border-radius: 8px; scroll-margin-top: 100px; }
+.prose .refs li:target { background: var(--accent-soft); color: var(--text); }
+@media (max-width: 640px) {
+  .prose .fig-row { grid-template-columns: minmax(0, 1fr); }
+}
 /* Rouge (kramdown) syntax colours */
 .highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .cp, .highlight .cd { color: var(--muted); font-style: italic; }
 .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kc, .highlight .nd { color: var(--accent-2); }

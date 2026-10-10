@@ -32,11 +32,12 @@
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
   <script src="https://events.vercount.one/js" defer></script>
   {%- if page.math %}
-  <!-- Math: add "math: true" to a post's front matter to load KaTeX. -->
+  <!-- Math: add "math: true" to a post's front matter to load KaTeX.
+       Write math as $$...$$ in Markdown; kramdown turns it into \(...\) inline or \[...\] on its own lines. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-          onload="renderMathInElement(document.querySelector('.prose'), {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]})"></script>
+          onload="renderMathInElement(document.querySelector('.prose'), {delimiters: [{left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}, {left: '$$', right: '$$', display: true}], throwOnError: false})"></script>
   {%- endif %}
 </head>
 <body>

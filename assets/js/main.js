@@ -586,7 +586,13 @@
   });
   $$(".prose img").forEach(function (img) {
     img.style.cursor = "zoom-in";
-    img.addEventListener("click", function () { openLightbox([{ type: "img", src: img.currentSrc || img.src, alt: img.alt, caption: img.alt }], 0); });
+    img.addEventListener("click", function () {
+      // Images that share a <figure> open as one gallery (e.g. a three-panel figure).
+      var fig = img.closest("figure"), group = fig ? $$("img", fig) : [img];
+      openLightbox(group.map(function (m) {
+        return { type: "img", src: m.currentSrc || m.src, alt: m.alt, caption: m.alt };
+      }), group.indexOf(img));
+    });
   });
 
   /* ------------------------------------------------------------------ hobby galleries: empty frame until media is added */
@@ -735,7 +741,7 @@
       places = (data.places || []).map(function (p, i) {
         byName[p.name] = i;
         return {
-          name: p.name, zh: p.zh || "", note: p.note || "", base: p.type === "base", left: p.label === "left",
+          name: p.name, note: p.note || "", base: p.type === "base", left: p.label === "left", listed: p.list !== false,
           s: Math.sin(p.lat * D2R), c: Math.cos(p.lat * D2R), lat: p.lat * D2R, lon: p.lon * D2R,
           region: continent(p.lat, p.lon), phase: Math.random() * 2.2
         };
@@ -759,23 +765,30 @@
         groups.push([r, function (p) { return !p.base && p.region === r; }]);
       });
       groups.forEach(function (g) {
-        var members = places.filter(g[1]);
-        if (!members.length) return;
+        var members = places.filter(g[1]), shown = members.filter(function (p) { return p.listed; });
+        if (!shown.length) return;
         var box = document.createElement("div"), h = document.createElement("h4"), list = document.createElement("div");
         box.className = "place-group"; list.className = "place-chips";
         h.textContent = g[0];
-        members.forEach(function (p) {
+        shown.forEach(function (p) {
           var i = places.indexOf(p), b = document.createElement("button");
           b.type = "button";
           b.className = "place-chip" + (p.base ? " base" : "");
           b.dataset.i = i;
           b.textContent = p.name;
-          if (p.zh) { var zh = document.createElement("span"); zh.className = "zh"; zh.textContent = p.zh; b.appendChild(zh); }
           b.addEventListener("click", function () { flyTo(i); });
           b.addEventListener("pointerenter", function () { hover = i; requestDraw(); });
           b.addEventListener("pointerleave", function () { hover = -1; requestDraw(); });
           list.appendChild(b);
         });
+        // Places marked "list": false stay on the globe but are summarised here as "etc."
+        if (shown.length < members.length) {
+          var etc = document.createElement("span");
+          etc.className = "place-etc";
+          etc.textContent = "etc.";
+          etc.title = (members.length - shown.length) + " more on the globe";
+          list.appendChild(etc);
+        }
         box.appendChild(h); box.appendChild(list); host.appendChild(box);
       });
     }
@@ -883,7 +896,7 @@
       if (tip.dataset.i !== String(i)) {
         var p = places[i];
         tip.dataset.i = i;
-        tip.textContent = p.name + (p.zh ? "  " + p.zh : "");
+        tip.textContent = p.name;
         if (p.note) { var sm = document.createElement("small"); sm.textContent = p.note; tip.appendChild(sm); }
       }
       tip.hidden = false;
@@ -994,7 +1007,7 @@
       loadPlaces(res[1]);
       renderChips();
       places.forEach(function (p, i) {
-        cmd("travel", "✈", "Fly to " + p.name + (p.zh ? " · " + p.zh : ""), "", function () {
+        cmd("travel", "✈", "Fly to " + p.name, "", function () {
           go("#life");
           setTimeout(function () { flyTo(i); }, 450);
         });
