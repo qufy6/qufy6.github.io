@@ -1282,7 +1282,7 @@ kbd {
   font: .84rem/1.7 var(--font-mono);
 }
 .prose pre code { padding: 0; border: 0; background: none; font-size: inherit; }
-.prose img { display: block; max-width: 100%; margin: 1.6em auto; border-radius: var(--r-md); }
+.prose img { display: block; max-width: 100%; height: auto; margin: 1.6em auto; border-radius: var(--r-md); }
 .prose table { width: 100%; margin: 1.4em 0; border-collapse: collapse; font-size: .92rem; }
 .prose th, .prose td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
 .prose th { color: var(--text); font-weight: 600; }
@@ -1302,6 +1302,7 @@ kbd {
 .prose .fig-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .prose .fig-row img {
   width: 100%;
+  height: auto;
   margin: 0;
   aspect-ratio: 3 / 2;
   padding: 8px;
