@@ -1,4 +1,4 @@
-# Feiyu Qu · Academic Homepage
+# Feiyu (Felix) Qu · Academic Homepage
 
 线上地址：https://qufy6.github.io/
 
@@ -67,7 +67,7 @@ math: true          # 需要公式时才加
 ```
 第一张会显示成大图，其余两列小图；点开是灯箱，可以左右切换。没有内容时显示留白框。图片建议先压到 2000px 以内，视频尽量小于 20 MB（GitHub 单个文件上限 100 MB）。
 
-**加经历**：在 `<ol class="timeline">` 里复制一个 `<li class="card glass spot exp …">…</li>`，按时间倒序放。当前在做的那条加 `now`（时间轴上的点会变成实心）；左侧图标用 `<span class="crest"><img src="assets/img/logos/…"></span>`，没有校徽/logo 的用 `crest crest-icon` 放一个 SVG 图标。导师统一写 “supervised by Prof. …”。
+**改学历 / 经历**：在 About 右侧的 `#education`、`#experience` 两个卡片里，每条是一个 `<li class="cv-item">`（当前在做的加 `now`）。左侧校徽放 `assets/img/logos/` 里，用 `<span class="crest"><img …></span>`。导师统一写 “supervised by Prof. …”。
 
 **找 PhD 的提示**：标题区的 “Seeking Fall 2027 PhD positions” 徽章（`class="seeking"`）、About 里的 `seeking-line` 和 Contact 里的 `seeking-note`，三处一起改或删。
 
@@ -88,6 +88,8 @@ python3 -c "print('new.name@example.edu'.replace('@', '#')[::-1])"
 **访客统计**：用的是 [Vercount](https://vercount.one)（免注册），数字显示在页脚状态栏，博客文章里还有单篇阅读数。
 
 记得顺手更新状态栏里的 `updated 2026-10`。
+
+**改了 CSS / JS 之后**：把 `index.html` 和 `404.html` 里 `style.css?v=5`、`main.js?v=5` 的数字加 1。GitHub Pages 会缓存 10 分钟，改版本号能让访客立刻拿到新样式（博客页面会自动处理）。
 
 ## 本地预览
 

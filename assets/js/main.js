@@ -110,24 +110,20 @@
   });
 
   /* ------------------------------------------------------------------ name scramble */
-  var nameEl = $("[data-scramble]");
-  if (nameEl && !reduceMotion) {
-    (function () {
-      var target = nameEl.textContent;
-      var glyphs = "!<>-_\\/[]{}=+*^?#01";
-      var settle = target.split("").map(function (c, i) { return 4 + i * 2 + Math.floor(Math.random() * 10); });
-      var last = Math.max.apply(null, settle);
-      var frame = 0;
-      (function tick() {
-        var out = "";
-        for (var i = 0; i < target.length; i++) {
-          out += (target[i] === " " || frame >= settle[i]) ? target[i] : glyphs[Math.floor(Math.random() * glyphs.length)];
-        }
-        nameEl.textContent = out;
-        if (frame++ < last) setTimeout(tick, 42);
-      })();
+  function scramble(el, delay) {
+    var target = el.textContent, glyphs = "!<>-_\\/[]{}=+*^?#01";
+    var settle = target.split("").map(function (c, i) { return delay + 4 + i * 2 + Math.floor(Math.random() * 10); });
+    var last = Math.max.apply(null, settle), frame = 0;
+    (function tick() {
+      var out = "";
+      for (var i = 0; i < target.length; i++) {
+        out += (target[i] === " " || frame >= settle[i]) ? target[i] : glyphs[Math.floor(Math.random() * glyphs.length)];
+      }
+      el.textContent = out;
+      if (frame++ < last) setTimeout(tick, 42);
     })();
   }
+  if (!reduceMotion) $$("[data-scramble]").forEach(function (el, n) { scramble(el, n * 4); });
 
   /* ------------------------------------------------------------------ terminal typing */
   var term = $(".term-body");

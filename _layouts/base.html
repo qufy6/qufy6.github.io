@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Feiyu Qu</title>
+  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Feiyu (Felix) Qu</title>
   {%- capture desc -%}{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ page.description | default: site.description }}{% endif %}{%- endcapture %}
   <meta name="description" content="{{ desc | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-  <meta name="author" content="Feiyu Qu">
+  <meta name="author" content="Feiyu (Felix) Qu">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#05070c" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <link rel="alternate" type="application/atom+xml" title="Feiyu Qu · Blog" href="{{ '/blog/feed.xml' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="Feiyu (Felix) Qu · Blog" href="{{ '/blog/feed.xml' | relative_url }}">
   <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
   <meta property="og:description" content="{{ desc | strip_html | normalize_whitespace | truncate: 160 | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <script>
     (function () {
       var d = document.documentElement;
@@ -29,7 +29,7 @@
       } catch (e) {}
     })();
   </script>
-  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   <script src="https://events.vercount.one/js" defer></script>
   {%- if page.math %}
   <!-- Math: add "math: true" to a post's front matter to load KaTeX.
@@ -53,7 +53,7 @@
 
   <header class="dock-wrap">
     <nav class="dock liquid" aria-label="Primary">
-      <a class="logo" href="{{ '/' | relative_url }}" aria-label="Feiyu Qu, homepage">fq<span class="caret" aria-hidden="true">_</span></a>
+      <a class="logo" href="{{ '/' | relative_url }}" aria-label="Feiyu (Felix) Qu, homepage">fq<span class="caret" aria-hidden="true">_</span></a>
       <div class="dock-links">
         <span class="dock-indicator" aria-hidden="true"></span>
         <a href="{{ '/#about' | relative_url }}">about</a>
@@ -63,11 +63,11 @@
       </div>
       <span class="dock-sep" aria-hidden="true"></span>
       <button class="icon-btn" type="button" data-action="palette" aria-label="Open command palette" title="Command palette  (⌘K or /)">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/></svg>
+        <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/></svg>
       </button>
       <button class="icon-btn theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Switch theme  (T)">
-        <svg class="i icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
-        <svg class="i icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.1M12 19.4v2.1M2.5 12h2.1M19.4 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></svg>
+        <svg class="i icon-moon" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.5 8.5 0 0 1 9.7 3.5a8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+        <svg class="i icon-sun" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.1M12 19.4v2.1M2.5 12h2.1M19.4 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></svg>
       </button>
     </nav>
   </header>
@@ -78,11 +78,11 @@
     <span class="sb-item"><i class="sb-dot" aria-hidden="true"></i><a href="{{ '/' | relative_url }}">qufy6.github.io</a></span>
     <span class="sb-item sb-hide-sm"><a href="{{ '/#contact' | relative_url }}" data-email="ude.htuomtrad#rg.uq.uyief">email</a></span>
     <span class="sb-item" title="Page views · unique visitors (Vercount)">
-      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
       pv&nbsp;<span id="vercount_value_site_pv">--</span> · uv&nbsp;<span id="vercount_value_site_uv">--</span>
     </span>
     <span class="sb-grow"></span>
-    <span class="sb-item">© {{ 'now' | date: "%Y" }} Feiyu Qu</span>
+    <span class="sb-item">© {{ 'now' | date: "%Y" }} Feiyu (Felix) Qu</span>
     <button class="sb-item sb-btn" type="button" data-action="palette" aria-label="Open command palette"><kbd>⌘K</kbd></button>
   </footer>
 
@@ -90,7 +90,7 @@
     <div class="palette-scrim" data-close></div>
     <div class="palette-panel liquid" role="dialog" aria-modal="true" aria-label="Command palette">
       <div class="palette-input">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="palette-input" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false"
                role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
         <kbd>esc</kbd>
@@ -110,13 +110,13 @@
       <div class="lightbox-stage"></div>
       <figcaption class="lightbox-caption"></figcaption>
       <button class="icon-btn lightbox-close" type="button" data-close aria-label="Close">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
       <button class="icon-btn lightbox-nav prev" type="button" aria-label="Previous">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+        <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
       </button>
       <button class="icon-btn lightbox-nav next" type="button" aria-label="Next">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        <svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
       </button>
     </figure>
   </div>
