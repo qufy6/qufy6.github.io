@@ -67,6 +67,10 @@ math: true          # 需要公式时才加
 ```
 第一张会显示成大图，其余两列小图；点开是灯箱，可以左右切换。没有内容时显示留白框。图片建议先压到 2000px 以内，视频尽量小于 20 MB（GitHub 单个文件上限 100 MB）。
 
+**加经历**：在 `<ol class="timeline">` 里复制一个 `<li class="card glass spot exp …">…</li>`，按时间倒序放。当前在做的那条加 `now`（时间轴上的点会变成实心）；左侧图标用 `<span class="crest"><img src="assets/img/logos/…"></span>`，没有校徽/logo 的用 `crest crest-icon` 放一个 SVG 图标。导师统一写 “supervised by Prof. …”。
+
+**找 PhD 的提示**：标题区的 “Seeking Fall 2027 PhD positions” 徽章（`class="seeking"`）、About 里的 `seeking-line` 和 Contact 里的 `seeking-note`，三处一起改或删。
+
 **加论文**：在 `<ol class="pubs">` 里复制一整个 `<li class="pub …">…</li>`，改：
 - 左侧图：`data-full`（大图）、`<img src>`（小图）、`data-caption`
 - 标签：会议 `venue-tag`、期刊 `venue-tag journal`；共一作加 `<span class="flag">co-first author</span>`，名字后加 `<sup>*</sup>`

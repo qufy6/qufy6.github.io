@@ -1025,6 +1025,7 @@
   function cmd(group, icon, label, hint, run) { commands.push({ group: group, icon: icon, label: label, hint: hint, run: run }); }
 
   cmd("navigate", "#", "Go to About", "g a", function () { go("#about"); });
+  cmd("navigate", "#", "Go to Experience", "g e", function () { go("#experience"); });
   cmd("navigate", "#", "Go to Publications", "g p", function () { go("#publications"); });
   cmd("navigate", "#", "Go to Blog", "g b", function () { go("#blog"); });
   cmd("navigate", "#", "Go to Life · travel & hobbies", "g l", function () { go("#life"); });
@@ -1150,6 +1151,7 @@
     else if (k === "g") gPressed = Date.now();
     else if (gPressed && Date.now() - gPressed < 900) {
       if (k === "a") go("#about");
+      else if (k === "e") go("#experience");
       else if (k === "p") go("#publications");
       else if (k === "b") go("#blog");
       else if (k === "l") go("#life");

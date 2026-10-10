@@ -1019,6 +1019,89 @@ kbd {
   font: 500 .76rem/1 var(--font-mono);
 }
 
+/* "Seeking PhD" badge (hero), inline pill, and the matching lines in About / Contact */
+.seeking {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 10px 16px 10px 13px;
+  border-radius: var(--r-pill);
+  color: var(--text);
+  font: 600 .84rem/1 var(--font-mono);
+  transition: translate .3s var(--spring);
+}
+.seeking strong { color: var(--accent); font-weight: 700; }
+.seeking svg { width: 15px; height: 15px; transition: translate .3s var(--spring); }
+.seeking:hover { translate: 0 -2px; text-decoration: none; }
+.seeking:hover svg { translate: 3px 0; }
+.pill {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 3px 9px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font: 600 .7rem/1.2 var(--font-mono);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  vertical-align: 2px;
+}
+.hero-affil .pill { display: table; margin: 7px 0 1px; }
+.bio .seeking-line { display: flex; align-items: center; gap: 11px; color: var(--text); }
+.bio .seeking-line .pulse { flex: none; }
+.seeking-note strong { color: var(--accent); }
+.col-label {
+  margin: 0 0 -4px 6px;
+  color: var(--muted);
+  font: 600 .68rem/1 var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.crest.crest-icon { color: #00855a; }
+.crest.crest-icon svg { width: 30px; height: 30px; }
+
+/* Experience timeline */
+.timeline { position: relative; display: grid; gap: 14px; margin: 0; padding: 0 0 0 28px; list-style: none; }
+.timeline::before {
+  content: "";
+  position: absolute; left: 9px; top: 22px; bottom: 22px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2) 70%, transparent);
+  opacity: .55;
+}
+.exp {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  transition: translate .45s var(--ease);
+}
+.exp:hover { translate: 0 -2px; }
+.exp .crest { width: 60px; height: 60px; border-radius: 18px; }
+.exp .crest img { width: 46px; height: 46px; }
+.rail-dot {
+  position: absolute; left: -25px; top: 50%;
+  width: 12px; height: 12px;
+  margin-top: -6px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.exp.now .rail-dot { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft), 0 0 14px var(--accent-glow); }
+.exp-body { min-width: 0; }
+.exp-body p { margin: 0; }
+.exp-when { margin-bottom: 5px !important; color: var(--accent); font: 600 .74rem/1 var(--font-mono); letter-spacing: .02em; }
+.exp-role { margin: 0; font: 650 1.08rem/1.35 var(--font-display); letter-spacing: -.01em; }
+.exp-org { margin-top: 2px !important; color: var(--text-2); font-size: .94rem; line-height: 1.5; }
+.exp-org a { color: var(--text); font-weight: 600; }
+.exp-meta { margin-top: 6px !important; color: var(--muted); font: 500 .76rem/1.6 var(--font-mono); }
+
 .affil-cards { display: grid; gap: 16px; align-content: start; }
 .affil-card { display: flex; align-items: center; gap: 18px; padding: 22px 24px; }
 .crest {
@@ -1411,6 +1494,13 @@ kbd {
 }
 @media (max-width: 560px) {
   .dock-links a { padding: 9px 7px; }
+  .timeline { padding-left: 22px; }
+  .rail-dot { left: -20px; }
+  .exp { gap: 14px; padding: 16px; }
+  .exp .crest { width: 48px; height: 48px; border-radius: 14px; }
+  .exp .crest img { width: 36px; height: 36px; }
+  .crest.crest-icon svg { width: 24px; height: 24px; }
+  .seeking { font-size: .8rem; }
   .hobbies { grid-template-columns: minmax(0, 1fr); }
   .travel { padding: 18px; gap: 18px; }
   .affil-card { padding: 18px; gap: 14px; }
