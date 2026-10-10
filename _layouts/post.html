@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<div class="read-progress" aria-hidden="true"><span></span></div>
+<main id="main" class="page-narrow">
+  <article class="post-article card glass">
+    <header class="post-head">
+      <p class="eyebrow"><a href="{{ '/blog/' | relative_url }}">~/blog</a>&nbsp;/ {{ page.date | date: "%Y-%m-%d" }}</p>
+      <h1>{{ page.title | escape }}</h1>
+      {%- assign words = content | number_of_words %}
+      <p class="post-meta-line">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+        <span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
+        <span><span id="vercount_value_page_pv">--</span> reads</span>
+        {%- for tag in page.tags %}
+        <span class="post-tag">#{{ tag }}</span>
+        {%- endfor %}
+      </p>
+    </header>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </article>
+
+  {%- if page.previous or page.next %}
+  <nav class="post-nav" aria-label="More posts">
+    {%- if page.previous %}
+    <a class="card glass spot prev" href="{{ page.previous.url | relative_url }}"><small>← older</small>{{ page.previous.title | escape }}</a>
+    {%- endif %}
+    {%- if page.next %}
+    <a class="card glass spot next" href="{{ page.next.url | relative_url }}"><small>newer →</small>{{ page.next.title | escape }}</a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+</main>

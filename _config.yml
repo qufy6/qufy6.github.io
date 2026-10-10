@@ -1,0 +1,30 @@
+# Jekyll only renders the blog. The homepage (index.html), 404.html and everything in assets/
+# have no front matter, so GitHub Pages copies them as-is.
+title: Feiyu Qu
+description: Notes on diffusion language models, latent reasoning, multi-agent systems, reinforcement learning, and life.
+author: Feiyu Qu
+url: https://qufy6.github.io
+baseurl: ""
+timezone: America/New_York
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+feed:
+  path: blog/feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md

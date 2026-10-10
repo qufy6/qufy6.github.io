@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Feiyu Qu</title>
-  <meta name="description" content="Feiyu Qu is an M.S. student in Computer Science at Dartmouth College, working on natural language processing, LLM-based multi-agent systems, and diffusion language models.">
+  <meta name="description" content="Feiyu Qu is an M.S. student in Computer Science at Dartmouth College and a research assistant at Carnegie Mellon University, working on diffusion language models, latent reasoning, multi-agent systems, and reinforcement learning.">
   <meta name="author" content="Feiyu Qu">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#05070c" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://qufy6.github.io/">
+  <link rel="alternate" type="application/atom+xml" title="Feiyu Qu · Blog" href="/blog/feed.xml">
 
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Feiyu Qu">
-  <meta property="og:description" content="M.S. student in Computer Science at Dartmouth College. Natural language processing, LLM-based multi-agent systems, diffusion language models.">
+  <meta property="og:description" content="M.S. student in CS at Dartmouth · research assistant at CMU. Diffusion language models, latent reasoning, multi-agent systems, reinforcement learning.">
   <meta property="og:url" content="https://qufy6.github.io/">
   <meta property="profile:first_name" content="Feiyu">
   <meta property="profile:last_name" content="Qu">
@@ -33,19 +34,25 @@
     })();
   </script>
   <script src="assets/js/main.js" defer></script>
+  <script src="https://events.vercount.one/js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Feiyu Qu",
     "jobTitle": "M.S. Student in Computer Science",
-    "affiliation": { "@type": "CollegeOrUniversity", "name": "Dartmouth College" },
+    "affiliation": [
+      { "@type": "CollegeOrUniversity", "name": "Dartmouth College" },
+      { "@type": "CollegeOrUniversity", "name": "Carnegie Mellon University" }
+    ],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sun Yat-sen University" },
     "url": "https://qufy6.github.io/",
     "sameAs": [
       "https://scholar.google.com/citations?user=aqVLYsAAAAAJ",
-      "https://github.com/qufy6"
+      "https://github.com/qufy6",
+      "https://www.linkedin.com/in/feiyu-qu-1016a8384/"
     ],
-    "knowsAbout": ["Natural Language Processing", "Multi-Agent Systems", "Diffusion Language Models"]
+    "knowsAbout": ["Diffusion Language Models", "Latent Reasoning", "Multi-Agent Systems", "Reinforcement Learning"]
   }
   </script>
 </head>
@@ -70,7 +77,8 @@
         <span class="dock-indicator" aria-hidden="true"></span>
         <a href="#about" data-spy="about">about</a>
         <a href="#publications" data-spy="publications">papers</a>
-        <a href="#contact" data-spy="contact">contact</a>
+        <a href="#blog" data-spy="blog">blog</a>
+        <a href="#life" data-spy="life">life</a>
       </div>
       <span class="dock-sep" aria-hidden="true"></span>
       <button class="icon-btn" type="button" data-action="palette" aria-label="Open command palette" title="Command palette  (⌘K or /)">
@@ -89,8 +97,11 @@
       <div class="hero-text">
         <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>hello, world — i'm</p>
         <h1 class="name" aria-label="Feiyu Qu"><span aria-hidden="true" data-scramble>Feiyu Qu</span></h1>
-        <p class="role">M.S. Student in Computer Science <span class="at">@</span> <a href="https://home.dartmouth.edu/">Dartmouth College</a></p>
-        <p class="tagline">Exploring how language-model agents collaborate, route tasks, and stay truthful.</p>
+        <ul class="hero-affil">
+          <li><img class="crest-sm" src="assets/img/logos/dartmouth.svg" alt="" width="26" height="26"><span>M.S. Student in Computer Science <span class="at">@</span> <a href="https://home.dartmouth.edu/">Dartmouth College</a></span></li>
+          <li><img class="crest-sm" src="assets/img/logos/cmu.svg" alt="" width="26" height="26"><span>Research Assistant <span class="at">@</span> <a href="https://www.ml.cmu.edu/">CMU Machine Learning Dept.</a></span></li>
+        </ul>
+        <p class="tagline">Teaching language models to reason in latent space, decode by diffusion, and work together.</p>
         <ul class="chips">
           <li>
             <!-- Stored reversed, with "#" for "@"; main.js assembles it so the address never appears in the source. -->
@@ -108,29 +119,35 @@
               <svg class="i-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>github
             </a>
           </li>
+          <li>
+            <a class="chip liquid" href="https://www.linkedin.com/in/feiyu-qu-1016a8384/">
+              <svg class="i-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>linkedin
+            </a>
+          </li>
         </ul>
       </div>
 
       <div class="term-stack">
-      <figure class="terminal glass spot">
-        <div class="term-bar" aria-hidden="true">
-          <span class="dots"><i></i><i></i><i></i></span>
-          <span class="term-title">feiyu — zsh — 80×24</span>
-        </div>
-        <div class="term-body">
-          <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">whoami</span></span>
-          <span class="ln out">Feiyu Qu · M.S. CS @ Dartmouth College</span>
-          <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">cat interests.txt</span></span>
-          <span class="ln out"><span class="hl">→</span> natural language processing</span>
-          <span class="ln out"><span class="hl">→</span> llm-based multi-agent systems</span>
-          <span class="ln out"><span class="hl">→</span> diffusion language models</span>
-          <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">ls ./publications | wc -l</span></span>
-          <span class="ln out"><span data-pub-count>4</span></span>
-          <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed"></span><span class="cursor" aria-hidden="true"></span></span>
-        </div>
-      </figure>
-      <!-- A draggable liquid-glass lens. Refracts what's beneath it in Chromium browsers; frosted elsewhere. -->
-      <div class="lens-wrap" aria-hidden="true"><div class="lens liquid" title="drag me · double-click to reset"></div></div>
+        <figure class="terminal glass spot">
+          <div class="term-bar" aria-hidden="true">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="term-title">feiyu — zsh — 80×24</span>
+          </div>
+          <div class="term-body">
+            <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">whoami</span></span>
+            <span class="ln out">Feiyu Qu · M.S. CS @ Dartmouth · RA @ CMU MLD</span>
+            <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">cat interests.txt</span></span>
+            <span class="ln out"><span class="hl">→</span> diffusion language models</span>
+            <span class="ln out"><span class="hl">→</span> latent reasoning</span>
+            <span class="ln out"><span class="hl">→</span> llm agents &amp; multi-agent systems</span>
+            <span class="ln out"><span class="hl">→</span> reinforcement learning</span>
+            <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">ls ./publications | wc -l</span></span>
+            <span class="ln out"><span data-pub-count>4</span></span>
+            <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed"></span><span class="cursor" aria-hidden="true"></span></span>
+          </div>
+        </figure>
+        <!-- A draggable liquid-glass lens. Refracts what's beneath it in Chromium browsers; frosted elsewhere. -->
+        <div class="lens-wrap" aria-hidden="true"><div class="lens liquid" title="drag me · double-click to reset"></div></div>
       </div>
     </section>
 
@@ -142,29 +159,41 @@
       <div class="about-grid">
         <div class="card glass spot bio reveal">
           <p>
-            I am a Master's student in Computer Science at <strong>Dartmouth College</strong>.
-            My research interests lie in natural language processing, with a focus on
-            <strong>LLM-based multi-agent systems</strong> and <strong>diffusion language models</strong>.
+            I am a Master's student in Computer Science at <strong>Dartmouth College</strong>, advised by
+            <a href="https://www.cs.dartmouth.edu/~soroush/">Prof. Soroush Vosoughi</a>, and a research assistant in the
+            <strong>Machine Learning Department at Carnegie Mellon University</strong>, working with
+            <a href="https://azanette.com/">Prof. Andrea Zanette</a>.
+            Before that, I received my B.Eng. in Software Engineering from Sun Yat-sen University.
           </p>
           <p>
-            My recent work spans decentralized task routing for self-organizing multi-agent systems,
-            collaboration between large and small language models on agentic tasks,
-            hallucination diagnosis, and long-form text generation.
+            My research focuses on <strong>diffusion language models</strong>, <strong>latent reasoning</strong>,
+            <strong>LLM agents and multi-agent systems</strong>, and <strong>reinforcement learning</strong>.
           </p>
+          <ul class="tags" aria-label="Research interests">
+            <li>#diffusion-lms</li>
+            <li>#latent-reasoning</li>
+            <li>#multi-agent-systems</li>
+            <li>#reinforcement-learning</li>
+          </ul>
         </div>
-        <figure class="card glass spot code-card reveal">
-          <figcaption><span class="file-dot" aria-hidden="true"></span>now.json</figcaption>
-<pre><code><span class="tk-p">{</span>
-  <span class="tk-k">"name"</span><span class="tk-p">:</span> <span class="tk-s">"Feiyu Qu"</span><span class="tk-p">,</span>
-  <span class="tk-k">"role"</span><span class="tk-p">:</span> <span class="tk-s">"M.S. Student in CS"</span><span class="tk-p">,</span>
-  <span class="tk-k">"school"</span><span class="tk-p">:</span> <span class="tk-s">"Dartmouth College"</span><span class="tk-p">,</span>
-  <span class="tk-k">"focus"</span><span class="tk-p">: [</span>
-    <span class="tk-s">"Natural Language Processing"</span><span class="tk-p">,</span>
-    <span class="tk-s">"Multi-Agent Systems"</span><span class="tk-p">,</span>
-    <span class="tk-s">"Diffusion Language Models"</span>
-  <span class="tk-p">]</span>
-<span class="tk-p">}</span></code></pre>
-        </figure>
+        <div class="affil-cards">
+          <div class="card glass spot affil-card reveal">
+            <span class="crest"><img src="assets/img/logos/dartmouth.svg" alt="Dartmouth College shield" width="60" height="60"></span>
+            <div class="affil-text">
+              <p class="affil-org"><a href="https://home.dartmouth.edu/">Dartmouth College</a></p>
+              <p class="affil-role">M.S. in Computer Science</p>
+              <p class="affil-meta">2025 – now · advisor: <a href="https://www.cs.dartmouth.edu/~soroush/">Soroush Vosoughi</a></p>
+            </div>
+          </div>
+          <div class="card glass spot affil-card reveal">
+            <span class="crest"><img src="assets/img/logos/cmu.svg" alt="Carnegie Mellon University seal" width="60" height="60"></span>
+            <div class="affil-text">
+              <p class="affil-org"><a href="https://www.cmu.edu/">Carnegie Mellon University</a></p>
+              <p class="affil-role">Research Assistant, Machine Learning Dept.</p>
+              <p class="affil-meta">2025 – now · with <a href="https://azanette.com/">Andrea Zanette</a></p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -172,77 +201,32 @@
       <header class="section-head reveal">
         <p class="eyebrow"><span class="idx">02</span>/ publications</p>
         <h2 id="pubs-title">Publications</h2>
-        <p class="section-meta"><span data-pub-count>4</span> papers · newest first · <sup>*</sup> equal contribution</p>
+        <p class="section-meta"><span data-pub-count>4</span> papers · <sup>*</sup> equal contribution · click a figure to enlarge</p>
       </header>
 
       <ol class="pubs">
 
-        <li class="pub card glass spot reveal" data-cmd="Stage-aware LLM-SLM collaboration · IP&amp;M 2027">
-          <div class="pub-meta">
-            <span class="venue-tag journal" title="Information Processing &amp; Management"><i aria-hidden="true"></i>IP&amp;M 2027</span>
-          </div>
-          <h3 class="pub-title"><a href="https://doi.org/10.1016/j.ipm.2026.105065">Stage-Aware LLM-SLM Collaboration for Agentic Tasks via Joint Routing and Verification</a></h3>
-          <p class="authors">Qingwen Yang, Jiawei Tang, Xuejing Li, Tiezheng Guo, Yanyi Liu, <span class="me">Feiyu Qu</span>, Yingyou Wen</p>
-          <p class="venue">Information Processing &amp; Management, 64(1), 2027</p>
-          <div class="pub-actions">
-            <a class="btn" href="https://doi.org/10.1016/j.ipm.2026.105065">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-yang2027stage"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
-          </div>
-          <div class="bibtex" id="bib-yang2027stage" hidden>
-            <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
-<pre><code>@article{yang2027stage,
-  title   = {Stage-aware {LLM-SLM} collaboration for agentic tasks via joint routing and verification},
-  author  = {Yang, Qingwen and Tang, Jiawei and Li, Xuejing and Guo, Tiezheng and Liu, Yanyi and Qu, Feiyu and Wen, Yingyou},
-  journal = {Information Processing \&amp; Management},
-  volume  = {64},
-  number  = {1},
-  pages   = {105065},
-  year    = {2027},
-  doi     = {10.1016/j.ipm.2026.105065}
-}</code></pre>
-          </div>
-        </li>
-
-        <li class="pub card glass spot reveal" data-cmd="LOOM · ESWA 2026">
-          <div class="pub-meta">
-            <span class="venue-tag journal" title="Expert Systems with Applications"><i aria-hidden="true"></i>ESWA 2026</span>
-          </div>
-          <h3 class="pub-title"><a href="https://doi.org/10.1016/j.eswa.2026.132879">LOOM: Weaving High-Quality Long-Texts Through Hierarchical Planning and Reflective Feedback</a></h3>
-          <p class="authors">Tiezheng Guo, Qingwen Yang, Yanyi Liu, Jiawei Tang, <span class="me">Feiyu Qu</span>, Yingyou Wen</p>
-          <p class="venue">Expert Systems with Applications, vol. 328, 2026</p>
-          <div class="pub-actions">
-            <a class="btn" href="https://doi.org/10.1016/j.eswa.2026.132879">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-guo2026loom"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
-          </div>
-          <div class="bibtex" id="bib-guo2026loom" hidden>
-            <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
-<pre><code>@article{guo2026loom,
-  title   = {{LOOM}: Weaving high-quality long-texts through hierarchical planning and reflective feedback},
-  author  = {Guo, Tiezheng and Yang, Qingwen and Liu, Yanyi and Tang, Jiawei and Qu, Feiyu and Wen, Yingyou},
-  journal = {Expert Systems with Applications},
-  volume  = {328},
-  pages   = {132879},
-  year    = {2026},
-  doi     = {10.1016/j.eswa.2026.132879}
-}</code></pre>
-          </div>
-        </li>
-
         <li class="pub card glass spot reveal" data-cmd="BiRouter · AAAI 2026">
-          <div class="pub-meta">
-            <span class="venue-tag" title="AAAI Conference on Artificial Intelligence"><i aria-hidden="true"></i>AAAI 2026</span>
-            <span class="flag">co-first author</span>
-          </div>
-          <h3 class="pub-title"><a href="https://doi.org/10.1609/aaai.v40i35.40227">Augmented Runtime Collaboration for Self-Organizing Multi-Agent Systems: A Hybrid Bi-Criteria Routing Approach</a></h3>
-          <p class="authors"><span class="me">Feiyu Qu</span><sup title="Equal contribution">*</sup>, Qingwen Yang<sup title="Equal contribution">*</sup>, Tiezheng Guo, Yanyi Liu, Yingyou Wen</p>
-          <p class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, 2026</p>
-          <div class="pub-actions">
-            <a class="btn" href="https://doi.org/10.1609/aaai.v40i35.40227">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="btn" href="https://arxiv.org/abs/2512.00740">arxiv<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-yang2026augmented"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
-          </div>
-          <div class="bibtex" id="bib-yang2026augmented" hidden>
-            <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+          <button class="pub-figure" type="button" data-full="assets/img/papers/birouter.jpg"
+                  data-caption="BiRouter · Figure 1 — the architecture of BiRouter and its workflow in self-organizing agent systems."
+                  aria-label="Enlarge the overview figure of BiRouter">
+            <img src="assets/img/papers/birouter-thumb.jpg" alt="Overview figure: BiRouter architecture and workflow" width="640" height="297" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag" title="AAAI Conference on Artificial Intelligence"><i aria-hidden="true"></i>AAAI 2026</span>
+              <span class="flag">co-first author</span>
+            </div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1609/aaai.v40i35.40227">Augmented Runtime Collaboration for Self-Organizing Multi-Agent Systems: A Hybrid Bi-Criteria Routing Approach</a></h3>
+            <p class="authors"><span class="me">Feiyu Qu</span><sup title="Equal contribution">*</sup>, Qingwen Yang<sup title="Equal contribution">*</sup>, Tiezheng Guo, Yanyi Liu, Yingyou Wen</p>
+            <p class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, 2026</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://doi.org/10.1609/aaai.v40i35.40227">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="btn" href="https://arxiv.org/abs/2512.00740">arxiv<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-yang2026augmented"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-yang2026augmented" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
 <pre><code>@inproceedings{yang2026augmented,
   title     = {Augmented Runtime Collaboration for Self-Organizing Multi-Agent Systems: A Hybrid Bi-Criteria Routing Approach},
   author    = {Yang, Qingwen and Qu, Feiyu and Guo, Tiezheng and Liu, Yanyi and Wen, Yingyou},
@@ -253,23 +237,30 @@
   year      = {2026},
   doi       = {10.1609/aaai.v40i35.40227}
 }</code></pre>
+            </div>
           </div>
         </li>
 
         <li class="pub card glass spot reveal" data-cmd="Hallucination diagnosis · AAAI 2026">
-          <div class="pub-meta">
-            <span class="venue-tag" title="AAAI Conference on Artificial Intelligence"><i aria-hidden="true"></i>AAAI 2026</span>
-          </div>
-          <h3 class="pub-title"><a href="https://doi.org/10.1609/aaai.v40i38.40495">From Detection to Diagnosis: Advancing Hallucination Analysis with Automated Data Synthesis</a></h3>
-          <p class="authors">Yanyi Liu, Qingwen Yang, Tiezheng Guo, <span class="me">Feiyu Qu</span>, Jun Liu, Yingyou Wen</p>
-          <p class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, 2026</p>
-          <div class="pub-actions">
-            <a class="btn" href="https://doi.org/10.1609/aaai.v40i38.40495">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <a class="btn" href="https://arxiv.org/abs/2601.09734">arxiv<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-liu2026detection"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
-          </div>
-          <div class="bibtex" id="bib-liu2026detection" hidden>
-            <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+          <button class="pub-figure fit-top" type="button" data-full="assets/img/papers/hdg.png"
+                  data-caption="Hallucination diagnosis · Figure 2 — an overview of the Hallucination Diagnosis Generator (HDG) pipeline."
+                  aria-label="Enlarge the overview figure of the hallucination diagnosis paper">
+            <img src="assets/img/papers/hdg.png" alt="Overview figure: the HDG data-synthesis pipeline" width="415" height="677" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag" title="AAAI Conference on Artificial Intelligence"><i aria-hidden="true"></i>AAAI 2026</span>
+            </div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1609/aaai.v40i38.40495">From Detection to Diagnosis: Advancing Hallucination Analysis with Automated Data Synthesis</a></h3>
+            <p class="authors">Yanyi Liu, Qingwen Yang, Tiezheng Guo, <span class="me">Feiyu Qu</span>, Jun Liu, Yingyou Wen</p>
+            <p class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, 2026</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://doi.org/10.1609/aaai.v40i38.40495">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <a class="btn" href="https://arxiv.org/abs/2601.09734">arxiv<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-liu2026detection"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-liu2026detection" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
 <pre><code>@inproceedings{liu2026detection,
   title     = {From Detection to Diagnosis: Advancing Hallucination Analysis with Automated Data Synthesis},
   author    = {Liu, Yanyi and Yang, Qingwen and Guo, Tiezheng and Qu, Feiyu and Liu, Jun and Wen, Yingyou},
@@ -280,6 +271,72 @@
   year      = {2026},
   doi       = {10.1609/aaai.v40i38.40495}
 }</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub card glass spot reveal" data-cmd="Stage-aware LLM-SLM collaboration · IP&amp;M 2027">
+          <button class="pub-figure" type="button" data-full="assets/img/papers/ipm.jpg"
+                  data-caption="Stage-aware LLM-SLM collaboration · Figure 1 — online task execution with stage-aware routing and verification, and offline MCTS labeling."
+                  aria-label="Enlarge the overview figure of the stage-aware LLM-SLM collaboration paper">
+            <img src="assets/img/papers/ipm-thumb.jpg" alt="Overview figure: online stage-aware execution and offline MCTS labeling" width="640" height="416" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag journal" title="Information Processing &amp; Management"><i aria-hidden="true"></i>IP&amp;M 2027</span>
+            </div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1016/j.ipm.2026.105065">Stage-Aware LLM-SLM Collaboration for Agentic Tasks via Joint Routing and Verification</a></h3>
+            <p class="authors">Qingwen Yang, Jiawei Tang, Xuejing Li, Tiezheng Guo, Yanyi Liu, <span class="me">Feiyu Qu</span>, Yingyou Wen</p>
+            <p class="venue">Information Processing &amp; Management, 64(1), 2027</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://doi.org/10.1016/j.ipm.2026.105065">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-yang2027stage"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-yang2027stage" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+<pre><code>@article{yang2027stage,
+  title   = {Stage-aware {LLM-SLM} collaboration for agentic tasks via joint routing and verification},
+  author  = {Yang, Qingwen and Tang, Jiawei and Li, Xuejing and Guo, Tiezheng and Liu, Yanyi and Qu, Feiyu and Wen, Yingyou},
+  journal = {Information Processing \&amp; Management},
+  volume  = {64},
+  number  = {1},
+  pages   = {105065},
+  year    = {2027},
+  doi     = {10.1016/j.ipm.2026.105065}
+}</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub card glass spot reveal" data-cmd="LOOM · ESWA 2026">
+          <button class="pub-figure" type="button" data-full="assets/img/papers/loom.jpg"
+                  data-caption="LOOM · Figure 1 — architectural planning, a local metacognitive loop, and a global feedback loop."
+                  aria-label="Enlarge the overview figure of LOOM">
+            <img src="assets/img/papers/loom-thumb.jpg" alt="Overview figure: the LOOM framework" width="640" height="374" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag journal" title="Expert Systems with Applications"><i aria-hidden="true"></i>ESWA 2026</span>
+            </div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1016/j.eswa.2026.132879">LOOM: Weaving High-Quality Long-Texts Through Hierarchical Planning and Reflective Feedback</a></h3>
+            <p class="authors">Tiezheng Guo, Qingwen Yang, Yanyi Liu, Jiawei Tang, <span class="me">Feiyu Qu</span>, Yingyou Wen</p>
+            <p class="venue">Expert Systems with Applications, vol. 328, 2026</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://doi.org/10.1016/j.eswa.2026.132879">paper<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-guo2026loom"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-guo2026loom" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+<pre><code>@article{guo2026loom,
+  title   = {{LOOM}: Weaving high-quality long-texts through hierarchical planning and reflective feedback},
+  author  = {Guo, Tiezheng and Yang, Qingwen and Liu, Yanyi and Tang, Jiawei and Qu, Feiyu and Wen, Yingyou},
+  journal = {Expert Systems with Applications},
+  volume  = {328},
+  pages   = {132879},
+  year    = {2026},
+  doi     = {10.1016/j.eswa.2026.132879}
+}</code></pre>
+            </div>
           </div>
         </li>
 
@@ -287,21 +344,71 @@
       <p class="more reveal">Citation counts and the latest list live on <a href="https://scholar.google.com/citations?user=aqVLYsAAAAAJ">Google Scholar</a>.</p>
     </section>
 
-    <!-- News: remove the comment markers and add items, newest first.
-    <section class="section" id="news" aria-labelledby="news-title">
+    <section class="section" id="blog" aria-labelledby="blog-title">
       <header class="section-head reveal">
-        <p class="eyebrow"><span class="idx">··</span>/ news</p>
-        <h2 id="news-title">News</h2>
+        <p class="eyebrow"><span class="idx">03</span>/ blog</p>
+        <h2 id="blog-title">Blog</h2>
+        <p class="section-meta">notes on research, code &amp; life · <a href="/blog/feed.xml">rss</a></p>
       </header>
-      <ul class="news card glass spot reveal">
-        <li><time datetime="2026-10">2026.10</time><span>Describe the news item here.</span></li>
-      </ul>
+      <!-- main.js fills this with the latest posts from /blog/posts.json (generated by Jekyll). -->
+      <div class="post-list" data-blog-list>
+        <a class="card glass spot post-card reveal" href="/blog/">
+          <span class="post-date">~/blog</span>
+          <span class="post-title">Read the blog</span>
+          <span class="post-excerpt">Notes on diffusion language models, latent reasoning, agents, and everything in between.</span>
+        </a>
+      </div>
+      <p class="more reveal"><a href="/blog/">All posts →</a></p>
     </section>
-    -->
+
+    <section class="section" id="life" aria-labelledby="life-title">
+      <header class="section-head reveal">
+        <p class="eyebrow"><span class="idx">04</span>/ life</p>
+        <h2 id="life-title">Beyond research</h2>
+      </header>
+
+      <article class="card glass travel reveal" aria-labelledby="travel-title">
+        <div class="globe-wrap">
+          <canvas id="globe" aria-label="A rotating globe marking the places I have been" role="img"></canvas>
+          <div class="globe-tip liquid" hidden></div>
+          <p class="globe-hint" aria-hidden="true">drag to spin · click a city</p>
+        </div>
+        <div class="travel-side">
+          <h3 id="travel-title" class="hobby-title"><span class="hobby-icon" aria-hidden="true">✈</span>Travel</h3>
+          <p class="travel-stats"><span data-place-count>31</span> places · <span data-continent-count>2</span> continents · still counting</p>
+          <!-- Chips are generated from assets/data/places.json -->
+          <div class="place-groups" data-place-groups></div>
+        </div>
+      </article>
+
+      <!-- Hobby galleries. To add photos or videos, put files in assets/media/ and add tags inside the
+           matching .media box, e.g.  <img src="assets/media/soccer/match.jpg" alt="…">
+           or  <video src="assets/media/music/clip.mp4" muted loop playsinline></video>  -->
+      <div class="hobbies">
+        <article class="card glass spot hobby reveal" id="soccer">
+          <h3 class="hobby-title"><span class="hobby-icon" aria-hidden="true">
+            <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7.2 4 2.9-1.5 4.7h-5L8 10.1Z"/><path d="M12 7.2V3M16 10.1l4-1.4M14.5 14.8l2.6 3.5M9.5 14.8l-2.6 3.5M8 10.1 4 8.7"/></svg>
+          </span>Soccer</h3>
+          <div class="media" data-media="soccer" data-glyph="⚽"></div>
+        </article>
+        <article class="card glass spot hobby reveal" id="music">
+          <h3 class="hobby-title"><span class="hobby-icon" aria-hidden="true">
+            <svg class="i" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+          </span>Music</h3>
+          <div class="media" data-media="music" data-glyph="♫"></div>
+        </article>
+        <article class="card glass spot hobby reveal" id="calligraphy">
+          <h3 class="hobby-title"><span class="hobby-icon" aria-hidden="true">
+            <svg class="i" viewBox="0 0 24 24"><path d="M20 4c-6 1-10 6-12 12l-2 4 4-2c6-2 11-6 12-12Z"/><path d="M14 10 6 18"/></svg>
+          </span>Calligraphy <span class="hobby-zh">书法</span></h3>
+          <div class="media" data-media="calligraphy" data-glyph="墨"></div>
+        </article>
+      </div>
+    </section>
 
     <section class="section" id="contact" aria-labelledby="contact-title">
       <header class="section-head reveal">
-        <p class="eyebrow"><span class="idx">03</span>/ contact</p>
+        <p class="eyebrow"><span class="idx">05</span>/ contact</p>
         <h2 id="contact-title">Get in touch</h2>
       </header>
       <div class="card glass spot contact-card reveal">
@@ -312,8 +419,9 @@
         </p>
         <p class="contact-note">
           Email is the best way to reach me. You can also find me on
-          <a href="https://scholar.google.com/citations?user=aqVLYsAAAAAJ">Google Scholar</a> and
-          <a href="https://github.com/qufy6">GitHub</a>.
+          <a href="https://scholar.google.com/citations?user=aqVLYsAAAAAJ">Google Scholar</a>,
+          <a href="https://github.com/qufy6">GitHub</a> and
+          <a href="https://www.linkedin.com/in/feiyu-qu-1016a8384/">LinkedIn</a>.
         </p>
       </div>
     </section>
@@ -323,7 +431,10 @@
   <footer class="statusbar glass">
     <span class="sb-item"><i class="sb-dot" aria-hidden="true"></i>qufy6.github.io</span>
     <span class="sb-item sb-hide-sm"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>main</span>
-    <span class="sb-item sb-hide-sm">utf-8 · plain html/css/js</span>
+    <span class="sb-item" title="Visitor statistics by Vercount">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span id="vercount_value_site_pv">--</span>&nbsp;views · <span id="vercount_value_site_uv">--</span>&nbsp;visitors
+    </span>
     <span class="sb-grow"></span>
     <span class="sb-item">© 2026 Feiyu Qu</span>
     <span class="sb-item">updated 2026-10</span>
@@ -336,7 +447,7 @@
     <div class="palette-panel liquid" role="dialog" aria-modal="true" aria-label="Command palette">
       <div class="palette-input">
         <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="palette-input" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false"
+        <input id="palette-input" type="text" placeholder="Type a command… try “fly”, “bib” or “theme”" autocomplete="off" spellcheck="false"
                role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
         <kbd>esc</kbd>
       </div>
@@ -345,9 +456,27 @@
         <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
         <span><kbd>↵</kbd> run</span>
         <span><kbd>t</kbd> theme</span>
-        <span><kbd>g</kbd> <kbd>a</kbd>/<kbd>p</kbd>/<kbd>c</kbd> jump</span>
+        <span><kbd>g</kbd> <kbd>a</kbd>/<kbd>p</kbd>/<kbd>b</kbd>/<kbd>l</kbd>/<kbd>c</kbd> jump</span>
       </div>
     </div>
+  </div>
+
+  <!-- Lightbox for paper figures and hobby media -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-scrim" data-close></div>
+    <figure class="lightbox-panel glass" role="dialog" aria-modal="true" aria-label="Media viewer">
+      <div class="lightbox-stage"></div>
+      <figcaption class="lightbox-caption"></figcaption>
+      <button class="icon-btn lightbox-close" type="button" data-close aria-label="Close">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <button class="icon-btn lightbox-nav prev" type="button" aria-label="Previous">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+      </button>
+      <button class="icon-btn lightbox-nav next" type="button" aria-label="Next">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
+    </figure>
   </div>
 
   <div class="toast liquid" role="status" aria-live="polite"></div>

@@ -179,7 +179,7 @@
   }
 
   /* ------------------------------------------------------------------ cursor-following light on glass */
-  $$(".spot").forEach(function (el) {
+  function addSpot(el) {
     el.addEventListener("pointermove", function (e) {
       var r = el.getBoundingClientRect();
       el.style.setProperty("--mx", (e.clientX - r.left) + "px");
@@ -189,7 +189,8 @@
       el.style.removeProperty("--mx");
       el.style.removeProperty("--my");
     });
-  });
+  }
+  $$(".spot").forEach(addSpot);
 
   /* ------------------------------------------------------------------ dock scroll-spy with a sliding liquid indicator */
   var spyLinks = $$(".dock-links a[data-spy]");
@@ -223,12 +224,22 @@
     window.addEventListener("scroll", rafThrottle(spy), { passive: true });
     window.addEventListener("resize", rafThrottle(moveIndicator));
     spy();
+  } else if (indicator && $(".dock-links a.active")) {
+    // Pages without sections (the blog) mark their link as active in the HTML.
+    var placeStatic = function () {
+      var a = $(".dock-links a.active");
+      indicator.style.width = a.offsetWidth + "px";
+      indicator.style.transform = "translateX(" + a.offsetLeft + "px)";
+      indicator.style.opacity = "1";
+    };
+    placeStatic();
+    window.addEventListener("resize", rafThrottle(placeStatic));
   }
 
   /* ------------------------------------------------------------------ smooth jumps */
   function go(hash) {
     var target = hash === "#top" ? document.body : $(hash);
-    if (!target) return;
+    if (!target) { location.href = "/" + hash; return; } // e.g. from a blog page back to a homepage section
     if (hash === "#top") window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
     else target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
     history.replaceState(null, "", hash === "#top" ? location.pathname : hash);
@@ -528,6 +539,472 @@
     lens.addEventListener("dblclick", function () { offX = offY = 0; wrap.style.transform = ""; });
   }
 
+  /* ------------------------------------------------------------------ lightbox (paper figures, hobby media, blog images) */
+  var lb = $("#lightbox"), lbStage = lb && $(".lightbox-stage", lb), lbCap = lb && $(".lightbox-caption", lb);
+  var lbItems = [], lbIndex = 0, lbReturn = null;
+  function lbShow(i) {
+    lbIndex = (i + lbItems.length) % lbItems.length;
+    var it = lbItems[lbIndex], el;
+    lbStage.innerHTML = "";
+    if (it.type === "video") {
+      el = document.createElement("video");
+      el.controls = true; el.autoplay = true; el.playsInline = true;
+    } else {
+      el = document.createElement("img");
+      el.alt = it.alt || "";
+    }
+    el.src = it.src;
+    lbStage.appendChild(el);
+    lbCap.textContent = it.caption || "";
+    lbCap.hidden = !it.caption;
+    $$(".lightbox-nav", lb).forEach(function (b) { b.hidden = lbItems.length < 2; });
+  }
+  function openLightbox(items, i) {
+    if (!lb || !items.length) return;
+    lbItems = items;
+    lbReturn = document.activeElement;
+    lb.hidden = false;
+    lbShow(i || 0);
+    $(".lightbox-close", lb).focus({ preventScroll: true });
+  }
+  function closeLightbox() {
+    if (!lb || lb.hidden) return;
+    lb.hidden = true;
+    lbStage.innerHTML = "";
+    if (lbReturn && lbReturn.focus) lbReturn.focus({ preventScroll: true });
+  }
+  if (lb) {
+    $$("[data-close]", lb).forEach(function (el) { el.addEventListener("click", closeLightbox); });
+    $(".lightbox-nav.prev", lb).addEventListener("click", function () { lbShow(lbIndex - 1); });
+    $(".lightbox-nav.next", lb).addEventListener("click", function () { lbShow(lbIndex + 1); });
+  }
+  $$(".pub-figure").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var img = $("img", btn);
+      openLightbox([{ type: "img", src: btn.dataset.full || img.src, alt: img.alt, caption: btn.dataset.caption }], 0);
+    });
+  });
+  $$(".prose img").forEach(function (img) {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", function () { openLightbox([{ type: "img", src: img.currentSrc || img.src, alt: img.alt, caption: img.alt }], 0); });
+  });
+
+  /* ------------------------------------------------------------------ hobby galleries: empty frame until media is added */
+  $$(".media").forEach(function (box) {
+    var media = $$("img, video", box);
+    if (!media.length) { box.classList.add("is-empty"); return; }
+    var items = media.map(function (m) {
+      return { type: m.tagName === "VIDEO" ? "video" : "img", src: m.currentSrc || m.src, alt: m.alt, caption: m.getAttribute("alt") || m.getAttribute("title") || "" };
+    });
+    media.forEach(function (m, i) {
+      if (m.tagName === "IMG") m.loading = "lazy";
+      m.addEventListener("click", function (e) { e.preventDefault(); openLightbox(items, i); });
+    });
+  });
+
+  /* ------------------------------------------------------------------ latest blog posts on the homepage */
+  var blogList = $("[data-blog-list]");
+  if (blogList && window.fetch) {
+    fetch("/blog/posts.json", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (posts) {
+        if (!Array.isArray(posts) || !posts.length) return;
+        blogList.innerHTML = "";
+        posts.slice(0, 3).forEach(function (p) {
+          var a = document.createElement("a");
+          a.className = "card glass spot post-card";
+          a.href = p.url;
+          a.innerHTML = '<span class="post-date"></span><span class="post-title"></span><span class="post-excerpt"></span><span class="post-foot"></span>';
+          $(".post-date", a).textContent = p.date;
+          $(".post-title", a).textContent = p.title;
+          $(".post-excerpt", a).textContent = p.excerpt || "";
+          var foot = $(".post-foot", a);
+          foot.textContent = (p.minutes || 1) + " min read";
+          (p.tags || []).forEach(function (t) {
+            var s = document.createElement("span");
+            s.className = "post-tag";
+            s.textContent = "#" + t;
+            foot.appendChild(s);
+          });
+          blogList.appendChild(a);
+          addSpot(a);
+        });
+      })
+      .catch(function () { /* keep the static "Read the blog" card */ });
+  }
+
+  /* ------------------------------------------------------------------ reading progress on blog posts */
+  var progress = $(".read-progress span"), article = $(".post-article");
+  if (progress && article) {
+    var updateProgress = function () {
+      var r = article.getBoundingClientRect();
+      var p = -r.top / Math.max(1, r.height - window.innerHeight * 0.6);
+      progress.style.setProperty("--p", Math.max(0, Math.min(1, p)).toFixed(4));
+    };
+    window.addEventListener("scroll", rafThrottle(updateProgress), { passive: true });
+    updateProgress();
+  }
+
+  /* ------------------------------------------------------------------ travel globe
+     A dotted, see-through glass globe on a canvas (orthographic projection, no libraries).
+     Land dots: assets/data/land-dots.json (Natural Earth 110m, sampled offline into bitmask rows).
+     Places and the journey arcs: assets/data/places.json. */
+  var globe = (function () {
+    var cv = $("#globe");
+    if (!cv || !cv.getContext || !window.fetch) return null;
+    var wrap = cv.parentElement, tip = $(".globe-tip", wrap), ctx = cv.getContext("2d");
+    var D2R = Math.PI / 180, TAU = Math.PI * 2, HOME_LAT = 24 * D2R;
+    var dpr = 1, R = 0, cx = 0, cy = 0;
+    var landN = 0, lSin, lCos, lLon, px, py, pz;
+    var places = [], arcs = [], proj = [];
+    var lon0 = 112 * D2R, lat0 = HOME_LAT, sin0 = 0, cos0 = 1, vLon = 0, vLat = 0;
+    var drag = null, hover = -1, focus = -1, focusUntil = 0, idleUntil = 0, tween = null;
+    var inView = false, rafId = 0, last = 0, C = {}, monoFont = "monospace";
+    var tmp = { x: 0, y: 0, z: 0 };
+
+    function readColors() {
+      var cs = getComputedStyle(root), v = function (n) { return cs.getPropertyValue(n).trim(); };
+      C = {
+        dot: v("--net-rgb"), base: v("--accent-rgb"), visit: v("--accent-2-rgb"), text: v("--text"),
+        hi: v("--globe-fill-hi"), lo: v("--globe-fill-lo"), rim: v("--globe-rim"), glow: v("--globe-glow"),
+        back: parseFloat(v("--globe-back")) || 0.08
+      };
+      monoFont = v("--font-mono") || "monospace";
+    }
+    function resize() {
+      var w = Math.round(wrap.getBoundingClientRect().width);
+      if (!w) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = cv.height = Math.round(w * dpr);
+      R = w * dpr * 0.4;
+      cx = cy = w * dpr / 2;
+      requestDraw();
+    }
+    function project(s, c, lon, h, out) {
+      var d = lon - lon0, cd = Math.cos(d);
+      out.x = cx + R * h * c * Math.sin(d);
+      out.y = cy - R * h * (cos0 * s - sin0 * c * cd);
+      out.z = sin0 * s + cos0 * c * cd;
+      return out;
+    }
+    function behind(o) { var dx = o.x - cx, dy = o.y - cy; return o.z < 0 && dx * dx + dy * dy < R * R; }
+    function glow(x, y, r, rgb, a) {
+      var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, "rgba(" + rgb + "," + a + ")");
+      g.addColorStop(1, "rgba(" + rgb + ",0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill();
+    }
+
+    function loadLand(data) {
+      var lats = [], lons = [];
+      data.rows.forEach(function (row) {
+        var bits = atob(row.bits);
+        for (var j = 0; j < row.n; j++) {
+          if ((bits.charCodeAt(j >> 3) >> (j & 7)) & 1) { lats.push(row.lat); lons.push(-180 + (j + 0.5) * 360 / row.n); }
+        }
+      });
+      landN = lats.length;
+      lSin = new Float32Array(landN); lCos = new Float32Array(landN); lLon = new Float32Array(landN);
+      px = new Float32Array(landN); py = new Float32Array(landN); pz = new Float32Array(landN);
+      for (var i = 0; i < landN; i++) {
+        lSin[i] = Math.sin(lats[i] * D2R); lCos[i] = Math.cos(lats[i] * D2R); lLon[i] = lons[i] * D2R;
+      }
+    }
+    function continent(lat, lon) {
+      if (lon < -25) return lat < 12 ? "south america" : "north america";
+      if (lat < -10 && lon > 110) return "oceania";
+      if (lat > 35 && lon < 60) return "europe";
+      if (lon < 52 && (lon < 35 || lat < 12)) return "africa";
+      return "asia";
+    }
+    function arc(a, b) {
+      var va = [a.c * Math.cos(a.lon), a.c * Math.sin(a.lon), a.s], vb = [b.c * Math.cos(b.lon), b.c * Math.sin(b.lon), b.s];
+      var w = Math.acos(Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2]))), sw = Math.sin(w), pts = [];
+      if (sw < 1e-6) return pts;
+      for (var i = 0; i <= 80; i++) {
+        var t = i / 80, k1 = Math.sin((1 - t) * w) / sw, k2 = Math.sin(t * w) / sw;
+        var x = k1 * va[0] + k2 * vb[0], y = k1 * va[1] + k2 * vb[1], z = k1 * va[2] + k2 * vb[2];
+        var lat = Math.asin(Math.max(-1, Math.min(1, z)));
+        pts.push({ s: Math.sin(lat), c: Math.cos(lat), lon: Math.atan2(y, x), h: 1 + (0.1 + 0.3 * w / Math.PI) * Math.sin(Math.PI * t) });
+      }
+      return pts;
+    }
+    function loadPlaces(data) {
+      var byName = {};
+      places = (data.places || []).map(function (p, i) {
+        byName[p.name] = i;
+        return {
+          name: p.name, zh: p.zh || "", note: p.note || "", base: p.type === "base", left: p.label === "left",
+          s: Math.sin(p.lat * D2R), c: Math.cos(p.lat * D2R), lat: p.lat * D2R, lon: p.lon * D2R,
+          region: continent(p.lat, p.lon), phase: Math.random() * 2.2
+        };
+      });
+      var j = data.journey || [];
+      for (var k = 0; k + 1 < j.length; k++) {
+        if (byName[j[k]] != null && byName[j[k + 1]] != null) arcs.push(arc(places[byName[j[k]]], places[byName[j[k + 1]]]));
+      }
+    }
+
+    function renderChips() {
+      $$("[data-place-count]").forEach(function (el) { el.textContent = places.length; });
+      var regions = {};
+      places.forEach(function (p) { regions[p.region] = (regions[p.region] || 0) + 1; });
+      $$("[data-continent-count]").forEach(function (el) { el.textContent = Object.keys(regions).length; });
+      var host = $("[data-place-groups]");
+      if (!host) return;
+      host.innerHTML = "";
+      var groups = [["studied & worked", function (p) { return p.base; }]];
+      Object.keys(regions).sort(function (a, b) { return regions[b] - regions[a]; }).forEach(function (r) {
+        groups.push([r, function (p) { return !p.base && p.region === r; }]);
+      });
+      groups.forEach(function (g) {
+        var members = places.filter(g[1]);
+        if (!members.length) return;
+        var box = document.createElement("div"), h = document.createElement("h4"), list = document.createElement("div");
+        box.className = "place-group"; list.className = "place-chips";
+        h.textContent = g[0];
+        members.forEach(function (p) {
+          var i = places.indexOf(p), b = document.createElement("button");
+          b.type = "button";
+          b.className = "place-chip" + (p.base ? " base" : "");
+          b.dataset.i = i;
+          b.textContent = p.name;
+          if (p.zh) { var zh = document.createElement("span"); zh.className = "zh"; zh.textContent = p.zh; b.appendChild(zh); }
+          b.addEventListener("click", function () { flyTo(i); });
+          b.addEventListener("pointerenter", function () { hover = i; requestDraw(); });
+          b.addEventListener("pointerleave", function () { hover = -1; requestDraw(); });
+          list.appendChild(b);
+        });
+        box.appendChild(h); box.appendChild(list); host.appendChild(box);
+      });
+    }
+    function markChip() {
+      $$(".place-chip").forEach(function (b) { b.classList.toggle("active", +b.dataset.i === focus); });
+    }
+
+    function draw(now) {
+      var size = cv.width, t = now / 1000, i, o;
+      ctx.clearRect(0, 0, size, size);
+      if (!R) return;
+      sin0 = Math.sin(lat0); cos0 = Math.cos(lat0);
+
+      // Atmosphere.
+      var atm = ctx.createRadialGradient(cx, cy, R * 0.9, cx, cy, R * 1.3);
+      atm.addColorStop(0, C.glow); atm.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = atm; ctx.beginPath(); ctx.arc(cx, cy, R * 1.3, 0, TAU); ctx.fill();
+
+      // Land: project once, then draw the far side faintly (seen through the glass) and the near side by depth.
+      for (i = 0; i < landN; i++) {
+        project(lSin[i], lCos[i], lLon[i], 1, tmp);
+        px[i] = tmp.x; py[i] = tmp.y; pz[i] = tmp.z;
+      }
+      var sz = 1.4 * dpr;
+      ctx.fillStyle = "rgba(" + C.dot + "," + C.back + ")";
+      for (i = 0; i < landN; i++) if (pz[i] < 0) ctx.fillRect(px[i] - sz / 2, py[i] - sz / 2, sz, sz);
+
+      var body = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.42, R * 0.05, cx, cy, R);
+      body.addColorStop(0, C.hi); body.addColorStop(1, C.lo);
+      ctx.fillStyle = body; ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.fill();
+
+      for (var b = 0; b < 4; b++) {
+        var lo = b / 4, hi = (b + 1) / 4, s = (1.2 + 0.28 * b) * dpr;
+        ctx.fillStyle = "rgba(" + C.dot + "," + (0.26 + 0.2 * b).toFixed(2) + ")";
+        for (i = 0; i < landN; i++) {
+          var z = pz[i];
+          if (z > lo && (z <= hi || b === 3)) ctx.fillRect(px[i] - s / 2, py[i] - s / 2, s, s);
+        }
+      }
+
+      // Glass rim and a soft specular highlight.
+      ctx.strokeStyle = C.rim; ctx.lineWidth = dpr;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.stroke();
+      var spec = ctx.createRadialGradient(cx - R * 0.42, cy - R * 0.5, 0, cx - R * 0.42, cy - R * 0.5, R * 0.6);
+      spec.addColorStop(0, "rgba(255,255,255,0.16)"); spec.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.fillStyle = spec; ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.fill();
+
+      // Journey arcs: dashed great circles lifted off the surface, with a travelling spark.
+      arcs.forEach(function (pts, ai) {
+        ctx.setLineDash([3 * dpr, 5 * dpr]);
+        ctx.lineDashOffset = -t * 16 * dpr;
+        ctx.lineWidth = 1.4 * dpr;
+        ctx.strokeStyle = "rgba(" + C.base + ",0.8)";
+        ctx.beginPath();
+        var pen = false;
+        pts.forEach(function (q) {
+          project(q.s, q.c, q.lon, q.h, tmp);
+          if (behind(tmp)) { pen = false; return; }
+          if (pen) ctx.lineTo(tmp.x, tmp.y); else { ctx.moveTo(tmp.x, tmp.y); pen = true; }
+        });
+        ctx.stroke();
+        ctx.setLineDash([]);
+        var q = pts[Math.floor(((t * 0.2 + ai * 0.5) % 1) * (pts.length - 1))];
+        if (q) {
+          project(q.s, q.c, q.lon, q.h, tmp);
+          if (!behind(tmp)) glow(tmp.x, tmp.y, 8 * dpr, C.base, 0.95);
+        }
+      });
+
+      // Places.
+      ctx.font = "500 " + 11 * dpr + "px " + monoFont;
+      for (i = 0; i < places.length; i++) {
+        var p = places[i];
+        o = proj[i] || (proj[i] = { x: 0, y: 0, z: 0 });
+        project(p.s, p.c, p.lon, 1, o);
+        if (o.z <= 0.02) continue;
+        var a = Math.min(1, o.z * 2.2), active = i === hover || i === focus, col = p.base ? C.base : C.visit;
+        if (p.base || active) {
+          var ph = ((t + p.phase) % 2.2) / 2.2;
+          ctx.strokeStyle = "rgba(" + col + "," + (0.65 * (1 - ph) * a).toFixed(3) + ")";
+          ctx.lineWidth = 1.2 * dpr;
+          ctx.beginPath(); ctx.arc(o.x, o.y, (4 + ph * 13) * dpr, 0, TAU); ctx.stroke();
+        }
+        glow(o.x, o.y, (active ? 11 : p.base ? 8 : 6) * dpr, col, (0.5 * a).toFixed(3));
+        ctx.fillStyle = "rgba(" + col + "," + a.toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(o.x, o.y, (active ? 3.8 : p.base ? 3.1 : 2.3) * dpr, 0, TAU); ctx.fill();
+        if (active) {
+          ctx.strokeStyle = "rgba(255,255,255," + a.toFixed(3) + ")";
+          ctx.lineWidth = 1.3 * dpr;
+          ctx.beginPath(); ctx.arc(o.x, o.y, 6.5 * dpr, 0, TAU); ctx.stroke();
+        }
+        if (p.base && o.z > 0.3) {
+          ctx.globalAlpha = Math.min(1, (o.z - 0.3) * 3) * 0.9;
+          ctx.fillStyle = C.text;
+          ctx.textAlign = p.left ? "right" : "left";
+          ctx.fillText(p.name, o.x + (p.left ? -10 : 10) * dpr, o.y + 4 * dpr);
+          ctx.globalAlpha = 1;
+        }
+      }
+    }
+
+    function updateTip() {
+      var i = hover >= 0 ? hover : focus, o = proj[i];
+      if (!tip || i < 0 || !o || o.z <= 0.02) { if (tip) tip.hidden = true; return; }
+      if (tip.dataset.i !== String(i)) {
+        var p = places[i];
+        tip.dataset.i = i;
+        tip.textContent = p.name + (p.zh ? "  " + p.zh : "");
+        if (p.note) { var sm = document.createElement("small"); sm.textContent = p.note; tip.appendChild(sm); }
+      }
+      tip.hidden = false;
+      tip.style.left = o.x / dpr + "px";
+      tip.style.top = o.y / dpr + "px";
+    }
+
+    function flyTo(i) {
+      var p = places[i];
+      if (!p) return;
+      var d = ((p.lon - lon0 + Math.PI) % TAU + TAU) % TAU - Math.PI;
+      tween = { a: [lon0, lat0], b: [lon0 + d, Math.max(-1, Math.min(1, p.lat * 0.85))], t0: performance.now(), dur: 1100 };
+      focus = i; focusUntil = performance.now() + 5500; idleUntil = focusUntil;
+      markChip();
+      requestDraw();
+    }
+
+    function frame(now) {
+      rafId = 0;
+      var moving = false, dt = last ? Math.min(50, now - last) : 16.7;
+      last = now;
+      if (tween) {
+        var k = Math.min(1, (now - tween.t0) / tween.dur), e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+        lon0 = tween.a[0] + (tween.b[0] - tween.a[0]) * e;
+        lat0 = tween.a[1] + (tween.b[1] - tween.a[1]) * e;
+        if (k >= 1) tween = null;
+        moving = true;
+      } else if (!drag) {
+        if (Math.abs(vLon) + Math.abs(vLat) > 1e-4) {
+          lon0 += vLon; lat0 = Math.max(-1.2, Math.min(1.2, lat0 + vLat));
+          vLon *= 0.93; vLat *= 0.93;
+          moving = true;
+        } else if (!reduceMotion && now > idleUntil) {
+          lon0 -= 0.0013 * dt;                       // ≈ 4.5° per second, west to east like the real Earth
+          lat0 += (HOME_LAT - lat0) * 0.02;
+          moving = true;
+        }
+      }
+      if (focus >= 0 && now > focusUntil) { focus = -1; markChip(); }
+      draw(now);
+      updateTip();
+      if (inView && (moving || drag || !reduceMotion)) rafId = requestAnimationFrame(frame);
+    }
+    function requestDraw() { if (!rafId && inView) rafId = requestAnimationFrame(frame); }
+
+    function pick(e) {
+      var r = cv.getBoundingClientRect(), mx = (e.clientX - r.left) * dpr, my = (e.clientY - r.top) * dpr;
+      var best = -1, bd = 196 * dpr * dpr;
+      proj.forEach(function (o, i) {
+        if (!o || o.z <= 0.02) return;
+        var dx = o.x - mx, dy = o.y - my, d = dx * dx + dy * dy;
+        if (d < bd) { bd = d; best = i; }
+      });
+      return best;
+    }
+    cv.addEventListener("pointerdown", function (e) {
+      drag = { x: e.clientX, y: e.clientY, lon: lon0, lat: lat0, moved: false };
+      tween = null; vLon = vLat = 0;
+      cv.setPointerCapture(e.pointerId);
+      cv.classList.add("dragging");
+      requestDraw();
+    });
+    cv.addEventListener("pointermove", function (e) {
+      if (drag) {
+        var dx = e.clientX - drag.x, dy = e.clientY - drag.y, k = dpr / R;
+        if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+        var nl = drag.lon - dx * k, nt = Math.max(-1.2, Math.min(1.2, drag.lat + dy * k));
+        vLon = nl - lon0; vLat = nt - lat0;
+        lon0 = nl; lat0 = nt;
+        idleUntil = performance.now() + 2500;
+        requestDraw();
+        return;
+      }
+      var h = pick(e);
+      if (h !== hover) { hover = h; cv.classList.toggle("hovering", h >= 0); requestDraw(); }
+    });
+    function endDrag(e) {
+      if (!drag) return;
+      var click = !drag.moved;
+      drag = null;
+      cv.classList.remove("dragging");
+      if (click) { var h = pick(e); if (h >= 0) flyTo(h); }
+      requestDraw();
+    }
+    cv.addEventListener("pointerup", endDrag);
+    cv.addEventListener("pointercancel", endDrag);
+    cv.addEventListener("pointerleave", function () { if (hover >= 0) { hover = -1; cv.classList.remove("hovering"); requestDraw(); } });
+
+    readColors();
+    themeListeners.push(function () { readColors(); requestDraw(); });
+    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(wrap);
+    else window.addEventListener("resize", rafThrottle(resize));
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (inView) { last = 0; requestDraw(); }
+      }, { rootMargin: "120px" }).observe(cv);
+    } else {
+      inView = true;
+    }
+    resize();
+
+    Promise.all([
+      fetch("/assets/data/land-dots.json").then(function (r) { return r.json(); }),
+      fetch("/assets/data/places.json").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      loadLand(res[0]);
+      loadPlaces(res[1]);
+      renderChips();
+      places.forEach(function (p, i) {
+        cmd("travel", "✈", "Fly to " + p.name + (p.zh ? " · " + p.zh : ""), "", function () {
+          go("#life");
+          setTimeout(function () { flyTo(i); }, 450);
+        });
+      });
+      requestDraw();
+    }).catch(function () { wrap.classList.add("globe-error"); });
+
+    return { flyTo: flyTo };
+  })();
+
   /* ------------------------------------------------------------------ command palette */
   var palette = $("#palette"), input = $("#palette-input"), list = $("#palette-list");
   var commands = [], visible = [], selected = 0, lastFocus = null;
@@ -536,13 +1013,17 @@
 
   cmd("navigate", "#", "Go to About", "g a", function () { go("#about"); });
   cmd("navigate", "#", "Go to Publications", "g p", function () { go("#publications"); });
+  cmd("navigate", "#", "Go to Blog", "g b", function () { go("#blog"); });
+  cmd("navigate", "#", "Go to Life · travel & hobbies", "g l", function () { go("#life"); });
   cmd("navigate", "#", "Go to Contact", "g c", function () { go("#contact"); });
   cmd("navigate", "↑", "Back to top", "", function () { go("#top"); });
-  cmd("actions", "@", "Copy email address", "", function () { copy(email, "email"); });
+  if (email) cmd("actions", "@", "Copy email address", "", function () { copy(email, "email"); });
   cmd("actions", "◐", "Toggle light / dark theme", "t", toggleTheme);
   if (net) cmd("actions", "~", "Pause / resume the background network", "", function () { toast(net.toggle() ? "network: running" : "network: paused"); });
+  cmd("links", "✎", "Open the blog · all posts", "", function () { location.href = "/blog/"; });
   cmd("links", "↗", "Open Google Scholar", "", function () { openUrl("https://scholar.google.com/citations?user=aqVLYsAAAAAJ"); });
   cmd("links", "↗", "Open GitHub", "", function () { openUrl("https://github.com/qufy6"); });
+  cmd("links", "↗", "Open LinkedIn", "", function () { openUrl("https://www.linkedin.com/in/feiyu-qu-1016a8384/"); });
   cmd("links", "</>", "View this site's source", "", function () { openUrl("https://github.com/qufy6/qufy6.github.io"); });
   $$(".pub").forEach(function (pub) {
     var code = $(".bibtex code", pub);
@@ -631,6 +1112,12 @@
   function typingIn(el) { return el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)); }
   document.addEventListener("keydown", function (e) {
     var k = e.key;
+    if (lb && !lb.hidden) {
+      if (k === "Escape") { e.preventDefault(); closeLightbox(); }
+      else if (k === "ArrowLeft" && lbItems.length > 1) { e.preventDefault(); lbShow(lbIndex - 1); }
+      else if (k === "ArrowRight" && lbItems.length > 1) { e.preventDefault(); lbShow(lbIndex + 1); }
+      return;
+    }
     if (palette && (e.metaKey || e.ctrlKey) && (k === "k" || k === "K")) {
       e.preventDefault();
       if (palette.hidden) openPalette(); else closePalette();
@@ -651,6 +1138,8 @@
     else if (gPressed && Date.now() - gPressed < 900) {
       if (k === "a") go("#about");
       else if (k === "p") go("#publications");
+      else if (k === "b") go("#blog");
+      else if (k === "l") go("#life");
       else if (k === "c") go("#contact");
       gPressed = 0;
     }
