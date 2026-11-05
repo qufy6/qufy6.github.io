@@ -73,7 +73,7 @@ math: true          # 需要公式时才加
 
 **加论文**：在 `<ol class="pubs">` 里复制一整个 `<li class="pub …">…</li>`，改：
 - 左侧图：`data-full`（大图）、`<img src>`（小图）、`data-caption`
-- 标签：会议 `venue-tag`、期刊 `venue-tag journal`；共一作加 `<span class="flag">co-first author</span>`，名字后加 `<sup>*</sup>`
+- 标签：会议 `venue-tag`、期刊 `venue-tag journal`；共一作在名字后加 `<sup>*</sup>`
 - 自己的名字用 `<span class="me">Feiyu Qu</span>`
 - BibTeX：按钮的 `aria-controls` 和下面 `<div class="bibtex" id="…">` 的 id 要一致；`&` 写成 `&amp;`
 论文数量会自动统计。
