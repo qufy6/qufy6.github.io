@@ -1,7 +1,7 @@
 # Jekyll only renders the blog. The homepage (index.html), 404.html and everything in assets/
 # have no front matter, so GitHub Pages copies them as-is.
 title: Feiyu (Felix) Qu
-description: Notes on diffusion language models, latent reasoning, multi-agent systems, reinforcement learning, and life.
+description: Notes on flow matching, diffusion language models, LLM agents, multi-agent systems, and life.
 author: Feiyu (Felix) Qu
 url: https://qufy6.github.io
 baseurl: ""

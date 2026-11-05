@@ -778,6 +778,7 @@ kbd {
 }
 .venue-tag i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
 .venue-tag.journal { border-color: var(--tag-jour-line); background: var(--tag-jour-bg); color: var(--tag-jour-fg); }
+.venue-tag.preprint { border-color: var(--line); background: var(--btn-bg); color: var(--accent-3); }
 .flag {
   padding: 5px 11px;
   border: 1px dashed var(--accent-line);

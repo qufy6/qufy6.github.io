@@ -1,27 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Feiyu (Felix) Qu</title>
-  <meta name="description" content="Feiyu (Felix) Qu is an M.S. student in Computer Science at Dartmouth College and a research assistant at Carnegie Mellon University, working on diffusion language models, latent reasoning, multi-agent systems, and reinforcement learning. Seeking PhD positions starting Fall 2027.">
+  <meta name="description" content="Feiyu (Felix) Qu is an M.S. student in Computer Science at Dartmouth College and a research assistant at Carnegie Mellon University, working on flow matching and diffusion language models, LLM agents, and multi-agent systems. Seeking PhD positions starting Fall 2027.">
   <meta name="author" content="Feiyu (Felix) Qu">
   <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#eef2f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#05070c" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#05070c">
   <link rel="canonical" href="https://qufy6.github.io/">
   <link rel="alternate" type="application/atom+xml" title="Feiyu Qu · Blog" href="/blog/feed.xml">
 
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Feiyu (Felix) Qu">
-  <meta property="og:description" content="M.S. student in CS at Dartmouth · research assistant at CMU. Diffusion language models, latent reasoning, multi-agent systems, reinforcement learning. Seeking Fall 2027 PhD positions.">
+  <meta property="og:description" content="M.S. student in CS at Dartmouth · research assistant at CMU. Flow matching and diffusion language models, LLM agents, multi-agent systems. Seeking Fall 2027 PhD positions.">
   <meta property="og:url" content="https://qufy6.github.io/">
   <meta property="profile:first_name" content="Feiyu">
   <meta property="profile:last_name" content="Qu">
   <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/style.css?v=6">
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
   <script>
     // Runs before first paint: enables JS-only styles and applies a saved theme (no flash).
     (function () {
@@ -33,7 +32,7 @@
       } catch (e) {}
     })();
   </script>
-  <script src="assets/js/main.js?v=6" defer></script>
+  <script src="assets/js/main.js?v=7" defer></script>
   <script src="https://events.vercount.one/js" defer></script>
   <script type="application/ld+json">
   {
@@ -53,7 +52,7 @@
       "https://github.com/qufy6",
       "https://www.linkedin.com/in/feiyu-qu-1016a8384/"
     ],
-    "knowsAbout": ["Diffusion Language Models", "Latent Reasoning", "Multi-Agent Systems", "Reinforcement Learning"]
+    "knowsAbout": ["Generative Modeling", "Flow Matching", "Diffusion Language Models", "LLM Agents", "Multi-Agent Systems"]
   }
   </script>
 </head>
@@ -106,7 +105,7 @@
           <li><img class="crest-sm" src="assets/img/logos/dartmouth.svg" alt="" width="26" height="26"><span>M.S. in Computer Science <span class="at">@</span> <span class="nw"><a href="https://home.dartmouth.edu/">Dartmouth College</a> <span class="pill">full scholarship</span></span></span></li>
           <li><img class="crest-sm" src="assets/img/logos/cmu.svg" alt="" width="26" height="26"><span>Research Assistant <span class="at">@</span> <a href="https://www.cmu.edu/">Carnegie Mellon University</a></span></li>
         </ul>
-        <p class="tagline">Teaching language models to reason in latent space, decode by diffusion, and work together.</p>
+        <p class="tagline">Generative modeling for language and agentic systems. Parallelism is key to intelligence.</p>
         <ul class="chips">
           <li>
             <!-- Stored reversed, with "#" for "@"; main.js assembles it so the address never appears in the source. -->
@@ -141,14 +140,14 @@
           <div class="term-body">
             <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">whoami</span></span>
             <span class="ln out">Feiyu (Felix) Qu</span>
-            <span class="ln out">M.S. CS @ Dartmouth · RA @ CMU ECE</span>
+            <span class="ln out">M.S. CS @ Dartmouth · RA @ CMU</span>
             <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">cat interests.txt</span></span>
+            <span class="ln out"><span class="hl">→</span> continuous flow matching for language</span>
             <span class="ln out"><span class="hl">→</span> diffusion language models</span>
-            <span class="ln out"><span class="hl">→</span> latent reasoning</span>
             <span class="ln out"><span class="hl">→</span> llm agents &amp; multi-agent systems</span>
-            <span class="ln out"><span class="hl">→</span> reinforcement learning</span>
+            <span class="ln out"><span class="hl">→</span> parallelism as a route to intelligence</span>
             <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed">ls ./publications | wc -l</span></span>
-            <span class="ln out"><span data-pub-count>4</span></span>
+            <span class="ln out"><span data-pub-count>6</span></span>
             <span class="ln cmd"><span class="ps">~</span> <span class="arw">❯</span> <span class="typed"></span><span class="cursor" aria-hidden="true"></span></span>
           </div>
         </figure>
@@ -165,22 +164,25 @@
       <div class="about-grid">
         <div class="card glass spot bio reveal">
           <p>
-            I am a Master's student in Computer Science at <strong>Dartmouth College</strong>, supervised by
+            I am a Master's student in Computer Science (thesis track) at <strong>Dartmouth College</strong>, supervised by
             <a href="https://www.cs.dartmouth.edu/~soroush/">Prof. Soroush Vosoughi</a>. I am also a research assistant in the
-            <strong>Department of Electrical and Computer Engineering at Carnegie Mellon University</strong>, supervised by
+            <strong>Department of ECE and the Machine Learning Department at Carnegie Mellon University</strong>, supervised by
             <a href="https://azanette.com/">Prof. Andrea Zanette</a>.
             Before that, I received my B.Eng. in Software Engineering from Sun Yat-sen University.
           </p>
           <p>
-            My research focuses on <strong>diffusion language models</strong>, <strong>latent reasoning</strong>,
-            <strong>LLM agents and multi-agent systems</strong>, and <strong>reinforcement learning</strong>.
+            My research focuses on generative modeling for language and on agentic systems. I am currently exploring
+            <strong>continuous flow matching for language modeling</strong>, building on my prior work on
+            <strong>discrete (masked) diffusion language models</strong>. In parallel, I maintain a long-standing interest in
+            <strong>LLM agents</strong> and <strong>multi-agent systems</strong>. A unifying theme of my research is the view that
+            <strong>parallelism is key to intelligence</strong>, both at the architecture level of foundation models and at the application level of agents.
           </p>
           <p class="seeking-line"><span class="pulse pulse-red" aria-hidden="true"></span><span>I am looking for a <strong>PhD position starting in Fall 2027</strong>.</span></p>
           <ul class="tags" aria-label="Research interests">
+            <li>#flow-matching</li>
             <li>#diffusion-lms</li>
-            <li>#latent-reasoning</li>
+            <li>#llm-agents</li>
             <li>#multi-agent-systems</li>
-            <li>#reinforcement-learning</li>
           </ul>
         </div>
 
@@ -214,16 +216,16 @@
                 <span class="crest"><img src="assets/img/logos/cmu.svg" alt="Carnegie Mellon University seal" width="34" height="34"></span>
                 <div class="cv-body">
                   <p class="cv-head"><a href="https://www.ece.cmu.edu/">Carnegie Mellon University</a><span class="cv-when">Oct 2025 – now</span></p>
-                  <p class="cv-role">Research Assistant, Electrical &amp; Computer Engineering</p>
-                  <p class="cv-meta">supervised by <a href="https://azanette.com/">Prof. Andrea Zanette</a> · diffusion LMs &amp; RL</p>
+                  <p class="cv-role">Research Assistant, ECE &amp; Machine Learning Dept.</p>
+                  <p class="cv-meta">supervised by <a href="https://azanette.com/">Prof. Andrea Zanette</a> · diffusion / flow matching LMs &amp; RL</p>
                 </div>
               </li>
               <li class="cv-item">
                 <span class="crest"><img src="assets/img/logos/dartmouth.svg" alt="Dartmouth College shield" width="34" height="34"></span>
                 <div class="cv-body">
-                  <p class="cv-head"><a href="https://web.cs.dartmouth.edu/">Dartmouth College</a><span class="cv-when">Sep 2025 – Jun 2026</span></p>
-                  <p class="cv-role">Teaching Assistant, Computer Science</p>
-                  <p class="cv-meta">Artificial Intelligence · ML &amp; Statistical Data Analysis · Advanced NLP</p>
+                  <p class="cv-head"><a href="https://web.cs.dartmouth.edu/">Dartmouth College</a><span class="cv-when">Sep 2025 – now</span></p>
+                  <p class="cv-role">Graduate Teaching Assistant, Computer Science</p>
+                  <p class="cv-meta">COSC 76/276 Artificial Intelligence · COSC 189.38 Advanced NLP · COSC 74/274 ML &amp; Statistical Data Analysis</p>
                 </div>
               </li>
               <li class="cv-item">
@@ -231,7 +233,7 @@
                 <div class="cv-body">
                   <p class="cv-head"><span>Neusoft Research Institute</span><span class="cv-when">Apr – Aug 2025</span></p>
                   <p class="cv-role">Researcher, Generative AI Group</p>
-                  <p class="cv-meta">supervised by <a href="https://faculty.neu.edu.cn/wenyingyou/en/index.htm">Prof. Yingyou Wen</a> · AIGC, LLM multi-agent systems</p>
+                  <p class="cv-meta">supervised by <a href="https://faculty.neu.edu.cn/wenyingyou/en/index.htm">Prof. Yingyou Wen</a> · multi-agent systems &amp; hallucination mitigation</p>
                 </div>
               </li>
             </ul>
@@ -244,10 +246,39 @@
       <header class="section-head reveal">
         <p class="eyebrow"><span class="idx">02</span>/ publications</p>
         <h2 id="pubs-title">Publications</h2>
-        <p class="section-meta"><span data-pub-count>4</span> papers · <sup>*</sup> equal contribution · click a figure to enlarge</p>
+        <p class="section-meta"><span data-pub-count>6</span> papers · <sup>*</sup> equal contribution · click a figure to enlarge</p>
       </header>
 
       <ol class="pubs">
+
+        <li class="pub card glass spot reveal" data-cmd="AnchorDLM · in submission">
+          <button class="pub-figure" type="button" data-full="assets/img/papers/anchor.jpg"
+                  data-caption="AnchorDLM · Figure 1 — overview of the AnchorDLM framework."
+                  aria-label="Enlarge the overview figure: the AnchorDLM framework">
+            <img src="assets/img/papers/anchor-thumb.jpg" alt="Overview figure: the AnchorDLM framework" width="640" height="278" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag preprint" title="Under review; preprint on arXiv"><i aria-hidden="true"></i>In Submission</span>
+            </div>
+            <h3 class="pub-title"><a href="https://arxiv.org/abs/2610.15097">Anchors Enhance Controllability and Reasoning of Diffusion Language Models</a></h3>
+            <p class="authors"><span class="me">Feiyu Qu</span>, Zheng Huang, Andrea Zanette</p>
+            <p class="venue">arXiv preprint arXiv:2610.15097, 2026</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://arxiv.org/abs/2610.15097">arxiv<svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-qu2026anchors"><svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-qu2026anchors" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+<pre><code>@article{qu2026anchors,
+  title   = {Anchors Enhance Controllability and Reasoning of Diffusion Language Models},
+  author  = {Qu, Feiyu and Huang, Zheng and Zanette, Andrea},
+  journal = {arXiv preprint arXiv:2610.15097},
+  year    = {2026}
+}</code></pre>
+            </div>
+          </div>
+        </li>
 
         <li class="pub card glass spot reveal" data-cmd="BiRouter · AAAI 2026">
           <button class="pub-figure" type="button" data-full="assets/img/papers/birouter.jpg"
@@ -279,6 +310,35 @@
   pages     = {29811--29819},
   year      = {2026},
   doi       = {10.1609/aaai.v40i35.40227}
+}</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub card glass spot reveal" data-cmd="LAWA · NeurIPS 2026">
+          <button class="pub-figure" type="button" data-full="assets/img/papers/lawa.jpg"
+                  data-caption="LAWA · Figure 1 — overview of LAWA."
+                  aria-label="Enlarge the overview figure: the LAWA framework">
+            <img src="assets/img/papers/lawa-thumb.jpg" alt="Overview figure: the LAWA framework" width="640" height="278" loading="lazy" decoding="async">
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="venue-tag" title="Conference on Neural Information Processing Systems"><i aria-hidden="true"></i>NeurIPS 2026</span>
+            </div>
+            <h3 class="pub-title"><a href="https://arxiv.org/abs/2610.14481">Optimize Once, Execute Fast: Latency-Aware Multi-Agent Workflow Learning for Recurrent Queries</a></h3>
+            <p class="authors">Enpei Zhang, <span class="me">Feiyu Qu</span>, Zheng Huang, Dawei Zhou, Elynn Chen, Yujun Yan</p>
+            <p class="venue">Advances in Neural Information Processing Systems (NeurIPS), 2026</p>
+            <div class="pub-actions">
+              <a class="btn" href="https://arxiv.org/abs/2610.14481">arxiv<svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+              <button class="btn bib-toggle" type="button" aria-expanded="false" aria-controls="bib-zhang2026optimize"><svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg>bibtex</button>
+            </div>
+            <div class="bibtex" id="bib-zhang2026optimize" hidden>
+              <button class="btn copy-btn" type="button"><svg class="i" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>copy</button>
+<pre><code>@inproceedings{zhang2026optimize,
+  title     = {Optimize Once, Execute Fast: Latency-Aware Multi-Agent Workflow Learning for Recurrent Queries},
+  author    = {Zhang, Enpei and Qu, Feiyu and Huang, Zheng and Zhou, Dawei and Chen, Elynn and Yan, Yujun},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2026}
 }</code></pre>
             </div>
           </div>
@@ -398,7 +458,7 @@
         <a class="card glass spot post-card reveal" href="/blog/">
           <span class="post-date">~/blog</span>
           <span class="post-title">Read the blog</span>
-          <span class="post-excerpt">Notes on diffusion language models, latent reasoning, agents, and everything in between.</span>
+          <span class="post-excerpt">Notes on flow matching, diffusion language models, agents, and everything in between.</span>
         </a>
       </div>
       <p class="more reveal"><a href="/blog/">All posts →</a></p>
@@ -481,7 +541,7 @@
     </span>
     <span class="sb-grow"></span>
     <span class="sb-item">© 2026 Feiyu (Felix) Qu</span>
-    <span class="sb-item">updated 2026-10</span>
+    <span class="sb-item">updated 2026-11</span>
     <button class="sb-item sb-btn" type="button" data-action="palette" aria-label="Open command palette"><kbd>⌘K</kbd></button>
   </footer>
 
